@@ -34,7 +34,23 @@ export PATH="$PATH:$GRADLE_HOME/bin"
 export PATH="$PATH:$HOME/dev/node-v6.10.3-linux-x64/bin"
 ## MongoDB
 export PATH="$PATH:$HOME/dev/mongodb-linux-x86_64-debian81-3.4.4/bin"
+## Exercism
+export PATH="$PATH:$HOME/dev/exercism"
+## IDEA
+export PATH="$PATH:$HOME/dev/idea-IC-171.4424.56/bin"
+## Tomcat
+export CATALINA_HOME="$HOME/dev/apache-tomcat-8.5.16"
+export PATH="$PATH:$CATALINA_HOME/bin"
+## Mule ESB
+export MULE_HOME="$HOME/dev/mule-standalone-3.7.0"
+export PATH="$PATH:$MULE_HOME/bin"
 
+# screen setup
 if [ -f ~/.myscreenrc ]; then
     . ~/.myscreenrc
+fi
+
+# exercism cli completion
+if [ -f ~/.config/exercism/exercism_completion.bash ]; then
+    . ~/.config/exercism/exercism_completion.bash
 fi
