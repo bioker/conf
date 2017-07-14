@@ -44,6 +44,9 @@ export PATH="$PATH:$CATALINA_HOME/bin"
 ## Mule ESB
 export MULE_HOME="$HOME/dev/mule-standalone-3.7.0"
 export PATH="$PATH:$MULE_HOME/bin"
+## WildFly
+export JBOSS_HOME="$HOME/dev/wildfly-10.1.0.Final"
+export PATH="$PATH:$JBOSS_HOME/bin"
 
 # screen setup
 if [ -f ~/.myscreenrc ]; then
