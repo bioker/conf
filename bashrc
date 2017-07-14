@@ -50,6 +50,11 @@ if [ -f ~/.myscreenrc ]; then
     . ~/.myscreenrc
 fi
 
+# scripts
+if [ -f ~/.myscripts.sh ]; then
+    . ~/.myscripts.sh
+fi
+
 # exercism cli completion
 if [ -f ~/.config/exercism/exercism_completion.bash ]; then
     . ~/.config/exercism/exercism_completion.bash
