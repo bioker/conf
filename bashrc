@@ -47,6 +47,12 @@ export PATH="$PATH:$MULE_HOME/bin"
 ## WildFly
 export JBOSS_HOME="$HOME/dev/wildfly-10.1.0.Final"
 export PATH="$PATH:$JBOSS_HOME/bin"
+## SqlCl
+export PATH="$PATH:$HOME/dev/sqlcl/bin"
+## Java EE SDK
+export PATH="$PATH:$HOME/dev/glassfish4/bin"
+## Java EE SDK Glassfish
+export PATH="$PATH:$HOME/dev/glassfish4/glassfish/bin"
 
 # screen setup
 if [ -f ~/.myscreenrc ]; then
