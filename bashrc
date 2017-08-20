@@ -38,8 +38,8 @@ export PATH="$PATH:$HOME/dev/mongodb-linux-x86_64-debian81-3.4.4/bin"
 export PATH="$PATH:$HOME/dev/exercism"
 ## IDEA
 export PATH="$PATH:$HOME/dev/idea-IC-171.4424.56/bin"
-## Tomcat
-export CATALINA_HOME="$HOME/dev/apache-tomcat-8.5.16"
+## TomEE
+export CATALINA_HOME="$HOME/dev/apache-tomee-plus-7.0.3"
 export PATH="$PATH:$CATALINA_HOME/bin"
 ## Mule ESB
 export MULE_HOME="$HOME/dev/mule-standalone-3.7.0"
