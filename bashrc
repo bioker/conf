@@ -53,6 +53,8 @@ export PATH="$PATH:$HOME/dev/sqlcl/bin"
 export PATH="$PATH:$HOME/dev/glassfish4/bin"
 ## Java EE SDK Glassfish
 export PATH="$PATH:$HOME/dev/glassfish4/glassfish/bin"
+## H2
+export PATH="$PATH:$HOME/dev/h2/bin"
 
 # screen setup
 if [ -f ~/.myscreenrc ]; then
