@@ -55,6 +55,8 @@ export PATH="$PATH:$HOME/dev/glassfish4/bin"
 export PATH="$PATH:$HOME/dev/glassfish4/glassfish/bin"
 ## H2
 export PATH="$PATH:$HOME/dev/h2/bin"
+## Jmeter
+export PATH="$PATH:$HOME/dev/apache-jmeter-3.2/bin/"
 
 # screen setup
 if [ -f ~/.myscreenrc ]; then
