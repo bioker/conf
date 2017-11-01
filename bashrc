@@ -39,7 +39,7 @@ export PATH="$PATH:$HOME/dev/exercism"
 ## IDEA
 export PATH="$PATH:$HOME/dev/idea-IC-171.4424.56/bin"
 ## TomEE
-export CATALINA_HOME="$HOME/dev/apache-tomee-plus-7.0.3"
+export CATALINA_HOME="$HOME/dev/apache-tomcat-8.5.16"
 export PATH="$PATH:$CATALINA_HOME/bin"
 ## Mule ESB
 export MULE_HOME="$HOME/dev/mule-standalone-3.7.0"
