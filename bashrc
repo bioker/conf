@@ -47,6 +47,9 @@ export PATH="$PATH:$MULE_HOME/bin"
 ## WildFly
 export JBOSS_HOME="$HOME/dev/wildfly-10.1.0.Final"
 export PATH="$PATH:$JBOSS_HOME/bin"
+## Jmeter
+export SCALA_HOME="$HOME/dev/scala-2.12.4/"
+export PATH="$PATH:$SCALA_HOME/bin/"
 ## SqlCl
 export PATH="$PATH:$HOME/dev/sqlcl/bin"
 ## Java EE SDK
