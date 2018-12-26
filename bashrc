@@ -19,3 +19,5 @@ alias tmux='tmux -u'
 # developer environment
 ## JDK
 export JAVA_HOME="/usr/lib/jvm/java-1.11.0-openjdk-amd64"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
