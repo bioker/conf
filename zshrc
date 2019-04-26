@@ -66,9 +66,9 @@ plugins=(
   z
   git
   tmux
-  web-search
   zsh-syntax-highlighting
   zsh-autosuggestions
+  docker
   kubectl
   minikube
 )
@@ -103,6 +103,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-eval `dircolors ~/.dir_colors/dircolors`
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
