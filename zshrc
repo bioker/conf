@@ -62,16 +62,8 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  z
-  git
-  tmux
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-  docker
-  kubectl
-  minikube
-)
+plugins=(vi-mode z git tmux zsh-syntax-highlighting zsh-autosuggestions
+  docker docker-compose kubectl minikube python pip github colorize fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,3 +95,15 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias k='kubectl'
+alias d='docker'
+
+export PATH=$PATH:/home/wls/Programs/gradle-6.0.1/bin
+export PATH=$PATH:/usr/lib/jvm/jdk-12.0.2/bin
+export JAVA_HOME=/usr/lib/jvm/jdk-12.0.2
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/wls/google-cloud-sdk/path.zsh.inc' ]; then . '/home/wls/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/wls/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/wls/google-cloud-sdk/completion.zsh.inc'; fi
