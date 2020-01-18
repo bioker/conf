@@ -63,7 +63,8 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(vi-mode z git tmux zsh-syntax-highlighting zsh-autosuggestions
-  docker docker-compose kubectl minikube python pip github colorize fzf)
+  docker docker-compose kubectl minikube python pip github colorize fzf
+  mongodb)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,11 +96,22 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias e='vim ~/.zshrc'
+alias s='source ~/.zshrc'
 alias k='kubectl'
 alias d='docker'
+alias gb='./gradlew clean build -x test'
+alias gi='./gradlew buildImage -x test'
+alias gajava='git add \*.java'
+alias gasql='git add \*.sql'
+alias gpcb='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
 
-export PATH=$PATH:/home/wls/Programs/gradle-6.0.1/bin
+alias kdev='kubectl -n develop'
+alias ktest='kubectl -n test'
+
+export PATH=$PATH:/home/wls/Programs/gradle/bin
 export PATH=$PATH:/usr/lib/jvm/jdk-12.0.2/bin
+export PATH=$PATH:/home/wls/Programs/chromedriver
 export JAVA_HOME=/usr/lib/jvm/jdk-12.0.2
 
 # The next line updates PATH for the Google Cloud SDK.
