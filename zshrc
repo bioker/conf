@@ -108,7 +108,6 @@ alias gi='./gradlew buildImage -x test'
 alias gt='./gradlew test'
 alias gtasks='./gradlew tasks --all -q > /home/wls/.gradle_tasks' # caches current tasks of the project
 alias gtask='./gradlew :$(cat /home/wls/.gradle_tasks | fzf | sed -n -e "s/^\(.*\) - .*/\1/p")' # runs the task that you choose in fzf
-alias cleanimg='bash /home/wls/Scripts/bp/docker/remove_branch_images_except.sh BP-12405 "fixed-odds-bets\|pricing-jobs\|sport-analytics"'
 alias gajava='git add \*.java'
 alias gasql='git add \*.sql'
 alias gaproto='git add \*.proto'
@@ -117,7 +116,6 @@ alias gpcb='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
 alias gdev='git checkout develop'
 alias gc-='git checkout -- .'
 alias now='date +%s%3N'
-
 alias kdev='kubectl -n develop'
 alias ktest='kubectl -n test'
 
