@@ -4,8 +4,10 @@ ZSH_THEME="agnoster"
 
 plugins=(vi-mode z git tmux zsh-syntax-highlighting zsh-autosuggestions
   docker docker-compose kubectl minikube python pip github colorize fzf
-  mongodb zsh-completions gcloud)
+  mongodb zsh-completions gcloud helm)
 
+fpath+=($ZSH/plugins/docker)
+fpath+=($ZSH/plugins/helm)
 autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
@@ -25,6 +27,7 @@ alias gasql='git add \*.sql'
 alias gaproto='git add \*.proto'
 alias gaprops='git add \*.properties'
 alias gpcb='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
+alias gccb='git rev-parse --abbrev-ref HEAD | xclip -selection c'
 alias gdev='git checkout develop'
 alias gc-='git checkout -- .'
 alias now='date +%s%3N'
@@ -36,6 +39,7 @@ export PATH=$PATH:/home/wls/Programs/groovy/bin
 export PATH=$PATH:/usr/lib/jvm/jdk-12.0.2/bin
 export PATH=$PATH:/home/wls/Programs/chromedriver
 export PATH=$PATH:/home/wls/Programs/evans
+export PATH=$PATH:/home/wls/Programs/kafka/bin
 export JAVA_HOME=/usr/lib/jvm/jdk-12.0.2
 export GROOVY_HOME=/home/wls/Programs/groovy
 
