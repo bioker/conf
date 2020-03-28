@@ -1,14 +1,12 @@
+rm ~/.zcompdump*
+
 export ZSH="/home/wls/.oh-my-zsh"
 
 ZSH_THEME="agnoster"
 
 plugins=(vi-mode z git tmux zsh-syntax-highlighting zsh-autosuggestions
-  docker docker-compose kubectl minikube python pip github colorize fzf
+  docker docker-compose kubectl minikube python pip colorize fzf
   mongodb zsh-completions gcloud helm)
-
-fpath+=($ZSH/plugins/docker)
-fpath+=($ZSH/plugins/helm)
-autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 
