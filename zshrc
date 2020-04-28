@@ -10,6 +10,9 @@ plugins=(vi-mode z git tmux zsh-syntax-highlighting zsh-autosuggestions
 
 source $ZSH/oh-my-zsh.sh
 
+compdef _VBoxManage vm
+compdef _VBoxHeadless vmh
+
 alias e='vim ~/.zshrc'
 alias s='source ~/.zshrc'
 alias k='kubectl'
@@ -17,8 +20,12 @@ alias d='docker'
 alias dps='sudo docker ps'
 alias dip="sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
 alias dex="sudo docker exec -it"
+alias dl="sudo docker logs"
+alias ds='sudo docker stop'
+alias dsa='sudo docker stop $(sudo docker ps -qa)'
 alias jc='jupyter console'
 alias vm='VBoxManage'
+alias vmh='VBoxHeadless'
 alias gb='./gradlew clean build -x test'
 alias gi='./gradlew buildImage -x test'
 alias gt='./gradlew test'
