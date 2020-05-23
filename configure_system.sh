@@ -32,6 +32,16 @@ wget https://github.com/dandavison/delta/releases/download/0.1.1/git-delta_0.1.1
 sudo apt install git-delta_0.1.1_amd64.deb
 rm ./git-delta_0.1.1_amd64.deb
 
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+curl -LO https://github.com/int128/kubelogin/releases/download/v1.19.1/kubelogin_linux_amd64.zip
+unzip kubelogin_linux_amd64.zip
+sudo mv kubelogin /usr/local/bin/kubectl-oidc_login
+rm kubelogin_linux_amd64.zip
+rm LICENSE
+
 curl https://installer.id.ee/media/install-scripts/install-open-eid.sh | bash
 curl https://raw.githubusercontent.com/bioker/conf/master/configure_git.sh | bash
 
