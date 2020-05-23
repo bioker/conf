@@ -72,3 +72,4 @@ git clone https://github.com/bioker/kafka-zsh-completions.git ${ZSH_CUSTOM:-/hom
 chsh -s $(which zsh)
 
 curl https://raw.githubusercontent.com/bioker/conf/master/gnome-terminal-dark.dconf | dconf load /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/
+https://raw.githubusercontent.com/bioker/conf/master/dash-to-dock.dconf | dconf load /org/gnome/shell/extensions/
