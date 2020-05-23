@@ -42,16 +42,18 @@ sudo mv kubelogin /usr/local/bin/kubectl-oidc_login
 rm kubelogin_linux_amd64.zip
 rm LICENSE
 
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
 curl https://installer.id.ee/media/install-scripts/install-open-eid.sh | bash
 curl https://raw.githubusercontent.com/bioker/conf/master/configure_git.sh | bash
-
-# install ssh and gpg keys to proceed
-
 curl https://raw.githubusercontent.com/bioker/conf/master/configure_vim.sh | bash
 
 mkdir -p /home/wls/Projects/my
 mkdir -p /home/wls/Scripts/my
 mkdir -p /home/wls/Resources/my
+
+# install ssh and gpg keys to proceed
 
 git clone git@github.com:bioker/vimconf.git /home/wls/Projects/my/vimconf
 git clone git@github.com:bioker/conf.git /home/wls/Projects/my/conf
@@ -73,3 +75,4 @@ chsh -s $(which zsh)
 
 curl https://raw.githubusercontent.com/bioker/conf/master/gnome-terminal-dark.dconf | dconf load /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/
 https://raw.githubusercontent.com/bioker/conf/master/dash-to-dock.dconf | dconf load /org/gnome/shell/extensions/
+https://raw.githubusercontent.com/bioker/conf/master/input-sources.dconf | dconf load /org/gnome/desktop/input-sources/
