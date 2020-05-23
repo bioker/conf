@@ -6,7 +6,7 @@ ZSH_THEME="agnoster"
 
 plugins=(vi-mode z git tmux zsh-syntax-highlighting zsh-autosuggestions
   docker docker-compose kubectl minikube python pip colorize fzf
-  mongodb zsh-completions gcloud helm)
+  mongodb zsh-completions gcloud helm kafka-zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -29,6 +29,7 @@ alias vmh='VBoxHeadless'
 alias gb='./gradlew clean build -x test'
 alias gi='./gradlew buildImage -x test'
 alias gt='./gradlew test'
+alias gr='./gradlew release -Prelease.useAutomaticVersion=true'
 alias gtasks='./gradlew tasks --all -q > /home/wls/.gradle_tasks' # caches current tasks of the project
 alias gtask='./gradlew :$(cat /home/wls/.gradle_tasks | fzf | sed -n -e "s/^\(.*\) - .*/\1/p")' # runs the task that you choose in fzf
 alias gajava='git add \*.java'
@@ -38,7 +39,8 @@ alias gaprops='git add \*.properties'
 alias gpcb='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
 alias gccb='git rev-parse --abbrev-ref HEAD | xclip -selection c'
 alias gdev='git checkout develop'
-alias gc-='git checkout -- .'
+alias gicc='git checkout -- .'
+alias gic='git checkout --'
 alias now='date +%s%3N'
 alias kdev='kubectl -n develop'
 alias ktest='kubectl -n test'

@@ -1,0 +1,13 @@
+[/]
+foreground-color='rgb(0,255,0)'
+palette=['rgb(0,0,0)', 'rgb(170,0,0)', 'rgb(0,170,0)', 'rgb(170,85,0)', 'rgb(0,0,170)', 'rgb(170,0,170)', 'rgb(0,170,170)', 'rgb(170,170,170)', 'rgb(85,85,85)', 'rgb(255,85,85)', 'rgb(85,255,85)', 'rgb(255,255,85)', 'rgb(85,85,255)', 'rgb(255,85,255)', 'rgb(85,255,255)', 'rgb(255,255,255)']
+use-system-font=false
+use-transparent-background=true
+use-theme-colors=false
+font='Liberation Mono 16'
+use-theme-transparency=false
+allow-bold=true
+bold-color='rgb(0,0,255)'
+bold-color-same-as-fg=false
+background-color='rgb(0,0,0)'
+background-transparency-percent=16
