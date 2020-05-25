@@ -45,6 +45,8 @@ rm LICENSE
 sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
 curl https://installer.id.ee/media/install-scripts/install-open-eid.sh | bash
 curl https://raw.githubusercontent.com/bioker/conf/master/configure_git.sh | bash
 curl https://raw.githubusercontent.com/bioker/conf/master/configure_vim.sh | bash
