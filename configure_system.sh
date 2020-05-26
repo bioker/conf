@@ -42,6 +42,11 @@ sudo mv kubelogin /usr/local/bin/kubectl-oidc_login
 rm kubelogin_linux_amd64.zip
 rm LICENSE
 
+curl -LO https://github.com/psycofdj/yaml-path/releases/download/v0.4/yaml-path-0.4.linux-amd64.tar.gz
+sudo mv yaml-path-0.4.linux-amd64/yaml-path /usr/local/bin
+rm -r yaml-path-0.4.linux-amd64
+rm -r yaml-path-0.4.linux-amd64.tar.gz
+
 sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
