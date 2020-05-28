@@ -29,7 +29,7 @@ sudo apt install ./teamviewer_amd64.deb
 rm ./teamviewer_amd64.deb
 
 wget https://github.com/dandavison/delta/releases/download/0.1.1/git-delta_0.1.1_amd64.deb
-sudo apt install git-delta_0.1.1_amd64.deb
+sudo apt install ./git-delta_0.1.1_amd64.deb
 rm ./git-delta_0.1.1_amd64.deb
 
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
@@ -81,5 +81,5 @@ git clone https://github.com/bioker/kafka-zsh-completions.git ${ZSH_CUSTOM:-/hom
 chsh -s $(which zsh)
 
 curl https://raw.githubusercontent.com/bioker/conf/master/gnome-terminal-dark.dconf | dconf load /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/
-https://raw.githubusercontent.com/bioker/conf/master/dash-to-dock.dconf | dconf load /org/gnome/shell/extensions/
-https://raw.githubusercontent.com/bioker/conf/master/input-sources.dconf | dconf load /org/gnome/desktop/input-sources/
+curl https://raw.githubusercontent.com/bioker/conf/master/dash-to-dock.dconf | dconf load /org/gnome/shell/extensions/
+curl https://raw.githubusercontent.com/bioker/conf/master/input-sources.dconf | dconf load /org/gnome/desktop/input-sources/
