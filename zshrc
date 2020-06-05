@@ -44,6 +44,8 @@ alias gic='git checkout --'
 alias now='date +%s%3N'
 alias kdev='kubectl -n develop'
 alias ktest='kubectl -n test'
+alias jmx='java -jar /home/wls/Programs/jmxterm/jmxterm.jar'
+
 
 export PATH=$PATH:/home/wls/Programs/gradle/bin
 export PATH=$PATH:/home/wls/Programs/groovy/bin
