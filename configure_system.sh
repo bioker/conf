@@ -59,6 +59,12 @@ mkdir -p /home/wls/Programs/jmxterm
 curl -L https://github.com/jiaqi/jmxterm/releases/download/v1.0.1/jmxterm-1.0.1-uber.jar -o /home/wls/Programs/jmxterm/jmxterm-1.0.1-uber.jar
 ln -s /home/wls/Programs/jmxterm/jmxterm-1.0.1-uber.jar /home/wls/Programs/jmxterm/jmxterm.jar
 
+curl -LO https://releases.hashicorp.com/vault/1.4.2/vault_1.4.2_linux_amd64.zip
+unzip vault_1.4.2_linux_amd64.zip
+sudo mv vault /usr/local/bin
+rm vault_1.4.2_linux_amd64.zip
+vault -autocomplete-install
+
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 curl https://installer.id.ee/media/install-scripts/install-open-eid.sh | bash
 curl https://raw.githubusercontent.com/bioker/conf/master/configure_git.sh | bash
