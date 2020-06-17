@@ -16,6 +16,8 @@ compdef _VBoxHeadless vmh
 alias e='vim ~/.zshrc'
 alias s='source ~/.zshrc'
 alias k='kubectl'
+alias ksc='kubectl config use-context'
+alias kgc='kubectl config get-contexts'
 alias d='sudo docker'
 alias dps='sudo docker ps'
 alias dip="sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
