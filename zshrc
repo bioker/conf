@@ -33,7 +33,7 @@ alias gi='./gradlew buildImage --parallel'
 alias gt='./gradlew test --parallel'
 alias gr='./gradlew release -Prelease.useAutomaticVersion=true'
 alias gtasks='./gradlew tasks --all -q > /home/wls/.gradle_tasks' # caches current tasks of the project
-alias gtask='./gradlew :$(cat /home/wls/.gradle_tasks | fzf | sed -n -e "s/^\(.*\) - .*/\1/p")' # runs the task that you choose in fzf
+alias gtask='./gradlew :$(cat /home/wls/.gradle_tasks | fzf | cut -d " " -f1)' # runs the task that you choose in fzf
 alias gajava='git add \*.java'
 alias gasql='git add \*.sql'
 alias gaproto='git add \*.proto'
@@ -48,6 +48,7 @@ alias now='date +%s%3N'
 alias kdev='kubectl -n develop'
 alias ktest='kubectl -n test'
 alias jmx='java -jar /home/wls/Programs/jmxterm/jmxterm.jar'
+alias tf='terraform'
 
 
 export PATH=$PATH:/home/wls/Programs/gradle/bin
