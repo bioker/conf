@@ -63,3 +63,29 @@ export GROOVY_HOME=/home/wls/Programs/groovy
 function agsed {
     ag -l $1 | xargs sed -i -e "s/$1/$2/g"
 }
+
+function gen_ca_key {
+    openssl genrsa -out ${key_file:-"ca-key.pem"} 4096
+}
+
+function gen_ca_cert {
+    key_file_arg=${key_file:-"ca-key.pem"}
+    cert_file_arg=${cert_file:-"ca-cert.pem"}
+    subj_arg=${subj:-"/C=EE/ST=Harju/L=Tallinn/O=Viktor Vlasov/OU=Viktor Vlasov/CN=viktorvlasov.com"}
+    openssl req -new -x509 -key $key_file_arg -out $cert_file_arg -subj $subj_arg
+}
+
+function req_cert {
+    csr_arg=${csr_file:-"csr.pem"}
+    config_arg=${config_file:-"csr.config"}
+    key_arg=${key_file:-"key.pem"}
+    openssl req -new -out $csr_arg -keyout $key_arg -config $config_arg
+}
+
+function sign_cert {
+    csr_arg=${csr_file:-"csr.pem"}
+    ca_cert_arg=${ca_cert_file:-"ca-cert.pem"}
+    ca_key_arg=${ca_key_file:-"ca-key.pem"}
+    cert_arg=${cert_file:-"cert.pem"}
+    openssl x509 -req -in $csr_arg -CA $ca_cert_arg -CAkey $ca_key_arg -out $cert_arg
+}
