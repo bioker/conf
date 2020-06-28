@@ -64,28 +64,51 @@ function agsed {
     ag -l $1 | xargs sed -i -e "s/$1/$2/g"
 }
 
-function gen_ca_key {
-    openssl genrsa -out ${key_file:-"ca-key.pem"} 4096
+function genrsa {
+    openssl genrsa -out ${key_file:-"key.pem"} ${key_size:-"4096"}
 }
 
 function gen_ca_cert {
     key_file_arg=${key_file:-"ca-key.pem"}
     cert_file_arg=${cert_file:-"ca-cert.pem"}
-    subj_arg=${subj:-"/C=EE/ST=Harju/L=Tallinn/O=Viktor Vlasov/OU=Viktor Vlasov/CN=viktorvlasov.com"}
+    subj_arg=${subj:-"/C=EE/ST=Harju/L=Tallinn/O=Viktor Vlasov/OU=Viktor Vlasov/CN=localhost"}
     openssl req -new -x509 -key $key_file_arg -out $cert_file_arg -subj $subj_arg
 }
 
-function req_cert {
-    csr_arg=${csr_file:-"csr.pem"}
-    config_arg=${config_file:-"csr.config"}
+function gen_csr {
     key_arg=${key_file:-"key.pem"}
-    openssl req -new -out $csr_arg -keyout $key_arg -config $config_arg
+    config_arg=${config_file:-"csr.config"}
+    csr_arg=${csr_file:-"csr.pem"}
+    openssl req -new -out $csr_arg -key $key_arg -config $config_arg
 }
 
-function sign_cert {
+function gen_cert {
     csr_arg=${csr_file:-"csr.pem"}
     ca_cert_arg=${ca_cert_file:-"ca-cert.pem"}
     ca_key_arg=${ca_key_file:-"ca-key.pem"}
     cert_arg=${cert_file:-"cert.pem"}
-    openssl x509 -req -in $csr_arg -CA $ca_cert_arg -CAkey $ca_key_arg -out $cert_arg
+    openssl x509 -req -in $csr_arg -CA $ca_cert_arg -CAkey $ca_key_arg -CAcreateserial -out $cert_arg
+}
+
+function prepare_ssl_files {
+    key_file=ca-key.pem genrsa
+    key_file=server-key.pem genrsa
+    key_file=client-key.pem genrsa
+    gen_ca_cert
+    key_file=server-key.pem config_file=server-csr.config csr_file=server-csr.pem gen_csr
+    key_file=client-key.pem config_file=client-csr.config csr_file=client-csr.pem gen_csr
+    csr_file=server-csr.pem cert_file=server-cert.pem gen_cert
+    csr_file=client-csr.pem cert_file=client-cert.pem gen_cert
+}
+
+function jks2p12 {
+    keytool -importkeystore -srckeystore $1 -destkeystore $2 -deststoretype PKCS12
+}
+
+function get_p12_cert {
+    openssl pkcs12 -in $1 -nokeys -out $2
+}
+
+function get_p12_key {
+    openssl pkcs12 -in $1 -nocerts -nodes -out $2
 }
