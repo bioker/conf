@@ -64,7 +64,7 @@ export GROOVY_HOME=/home/wls/Programs/groovy
 function instavideo {
     in_file_arg=${in_file:-"video.mp4"}
     out_file_arg=${out_file:-"instavideo.mp4"}
-    ffmpeg -i $in_file_arg -s 1080x720 -r 30 -b:v 3M $out_file_arg
+    ffmpeg -i $in_file_arg -s 1080x720 -r 30 -b:v 3500K $out_file_arg
 }
 
 function agsed {
