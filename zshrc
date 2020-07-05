@@ -6,7 +6,7 @@ ZSH_THEME="agnoster"
 
 plugins=(vi-mode z git tmux zsh-syntax-highlighting zsh-autosuggestions
   docker docker-compose kubectl minikube python pip colorize fzf
-  mongodb zsh-completions gcloud helm kafka-zsh-completions)
+  mongodb zsh-completions gcloud helm kafka-zsh-completions zsh-abbr)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -33,7 +33,8 @@ alias gi='./gradlew buildImage --parallel'
 alias gt='./gradlew test --parallel'
 alias gr='./gradlew release -Prelease.useAutomaticVersion=true'
 alias gtasks='./gradlew tasks --all -q > /home/wls/.gradle_tasks' # caches current tasks of the project
-alias gtask='./gradlew :$(cat /home/wls/.gradle_tasks | fzf | cut -d " " -f1)' # runs the task that you choose in fzf
+abbr -S -g --force --quiet gtask='`cat /home/wls/.gradle_tasks | fzf | cut -d " " -f1`' # runs the task that you choose in fzf
+abbr -S -g --force --quiet fprb='ffprobe -hide_banner'
 alias gajava='git add \*.java'
 alias gasql='git add \*.sql'
 alias gaproto='git add \*.proto'
@@ -60,45 +61,90 @@ export PATH=$PATH:/home/wls/Programs/kafka/bin
 export JAVA_HOME=/usr/lib/jvm/jdk-12.0.2
 export GROOVY_HOME=/home/wls/Programs/groovy
 
+function instavideo {
+    in_file_arg=${in_file:-"video.mp4"}
+    out_file_arg=${out_file:-"instavideo.mp4"}
+    ffmpeg -i $in_file_arg -s 1080x720 -r 30 -b:v 3M $out_file_arg
+}
+
 function agsed {
     ag -l $1 | xargs sed -i -e "s/$1/$2/g"
 }
 
-function genrsa {
-    openssl genrsa -out ${key_file:-"key.pem"} ${key_size:-"4096"}
+function genkey {
+    openssl genrsa -out ${key_file:-"some.key"} ${key_size:-"4096"}
 }
 
-function gen_ca_cert {
-    key_file_arg=${key_file:-"ca-key.pem"}
-    cert_file_arg=${cert_file:-"ca-cert.pem"}
+function gencert {
+    key_file_arg=${key_file:-"some.key"}
+    cert_file_arg=${cert_file:-"some.crt"}
     subj_arg=${subj:-"/C=EE/ST=Harju/L=Tallinn/O=Viktor Vlasov/OU=Viktor Vlasov/CN=localhost"}
     openssl req -new -x509 -key $key_file_arg -out $cert_file_arg -subj $subj_arg
 }
 
-function gen_csr {
-    key_arg=${key_file:-"key.pem"}
-    config_arg=${config_file:-"csr.config"}
-    csr_arg=${csr_file:-"csr.pem"}
+function gencsr {
+    key_arg=${key_file:-"some.key"}
+    config_arg=${config_file:-"some.config"}
+    csr_arg=${csr_file:-"some.csr"}
     openssl req -new -out $csr_arg -key $key_arg -config $config_arg
 }
 
-function gen_cert {
-    csr_arg=${csr_file:-"csr.pem"}
-    ca_cert_arg=${ca_cert_file:-"ca-cert.pem"}
-    ca_key_arg=${ca_key_file:-"ca-key.pem"}
-    cert_arg=${cert_file:-"cert.pem"}
+function gensigncert {
+    csr_arg=${csr_file:-"cert-request.csr"}
+    ca_cert_arg=${ca_cert_file:-"ca.crt"}
+    ca_key_arg=${ca_key_file:-"ca.key"}
+    cert_arg=${cert_file:-"some.crt"}
     openssl x509 -req -in $csr_arg -CA $ca_cert_arg -CAkey $ca_key_arg -CAcreateserial -out $cert_arg
 }
 
+function copy2p12 {
+    key_file_arg=${key_file:-"some.key"}
+    cert_file_arg=${cert_file:-"some.crt"}
+    p12_file_arg=${p12_file:-"some.p12"}
+    openssl pkcs12 -export -out $p12_file_arg -inkey $key_file_arg -in $cert_file_arg
+}
+
+function gencakey {
+    key_file=ca.key genkey
+}
+
+function genserkey {
+    key_file=server.key genkey
+}
+
+function genclikey {
+    key_file=client.key genkey
+}
+
+function gencacert {
+    key_file=ca.key cert_file=ca.crt gencert
+}
+
+function gensercsr {
+    key_file=server.key config_file=server-csr.config csr_file=server.csr gencsr
+}
+
+function genclicsr {
+    key_file=client.key config_file=client-csr.config csr_file=client.csr gencsr
+}
+
+function gensercrt {
+    csr_file=server.csr ca_cert_file=ca.crt ca_key_file=ca.key cert_file=server.crt gensigncert
+}
+
+function genclicrt {
+    csr_file=client.csr ca_cert_file=ca.crt ca_key_file=ca.key cert_file=client.crt gensigncert
+}
+
 function prepare_ssl_files {
-    key_file=ca-key.pem genrsa
-    key_file=server-key.pem genrsa
-    key_file=client-key.pem genrsa
-    gen_ca_cert
-    key_file=server-key.pem config_file=server-csr.config csr_file=server-csr.pem gen_csr
-    key_file=client-key.pem config_file=client-csr.config csr_file=client-csr.pem gen_csr
-    csr_file=server-csr.pem cert_file=server-cert.pem gen_cert
-    csr_file=client-csr.pem cert_file=client-cert.pem gen_cert
+    gencakey
+    genserkey
+    genclikey
+    gencacert
+    gensercsr
+    genclicsr
+    gensercrt
+    genclicrt
 }
 
 function jks2p12 {
