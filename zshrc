@@ -61,10 +61,13 @@ export PATH=$PATH:/home/wls/Programs/kafka/bin
 export JAVA_HOME=/usr/lib/jvm/jdk-12.0.2
 export GROOVY_HOME=/home/wls/Programs/groovy
 
-function instavideo {
+function optimizevideo {
     in_file_arg=${in_file:-"video.mp4"}
-    out_file_arg=${out_file:-"instavideo.mp4"}
-    ffmpeg -i $in_file_arg -s 1080x720 -r 30 -b:v 3500K $out_file_arg
+    out_file_arg=${out_file:-"optimized-video.mp4"}
+    resoultion_arg=${res:-"1080x720"}
+    frate_arg=${rate:-"30"}
+    brate_arg=${bitrate:-"3500K"}
+    ffmpeg -i $in_file_arg -s $resoultion_arg -r $frate_arg -b:v $brate_arg $out_file_arg
 }
 
 function agsed {
