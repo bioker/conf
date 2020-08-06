@@ -29,12 +29,15 @@ alias jc='jupyter console'
 alias vm='VBoxManage'
 alias vmh='VBoxHeadless'
 alias gb='./gradlew clean build --parallel'
+alias gbxt='./gradlew clean build -x test --parallel'
 alias gi='./gradlew buildImage --parallel'
 alias gt='./gradlew test --parallel'
 alias gr='./gradlew release -Prelease.useAutomaticVersion=true'
 alias gtasks='./gradlew tasks --all -q > /home/wls/.gradle_tasks' # caches current tasks of the project
 abbr -S -g --force --quiet gtask='`cat /home/wls/.gradle_tasks | fzf | cut -d " " -f1`' # runs the task that you choose in fzf
 abbr -S -g --force --quiet fprb='ffprobe -hide_banner'
+abbr -S -g --force --quiet kdev='kubectl -n develop'
+abbr -S -g --force --quiet ktest='kubectl -n test'
 alias gajava='git add \*.java'
 alias gasql='git add \*.sql'
 alias gaproto='git add \*.proto'
@@ -44,10 +47,9 @@ alias gccb='git rev-parse --abbrev-ref HEAD | xclip -selection c'
 alias gdev='git checkout develop'
 alias gicc='git checkout -- .'
 alias gic='git checkout --'
+alias gis='git status'
 alias gidh='git diff HEAD'
 alias now='date +%s%3N'
-alias kdev='kubectl -n develop'
-alias ktest='kubectl -n test'
 alias jmx='java -jar /home/wls/Programs/jmxterm/jmxterm.jar'
 alias tf='terraform'
 
@@ -155,9 +157,9 @@ function jks2p12 {
 }
 
 function get_p12_cert {
-    openssl pkcs12 -in $1 -nokeys -out $2
+    openssl pkcs12 -in $1 -nokeys
 }
 
 function get_p12_key {
-    openssl pkcs12 -in $1 -nocerts -nodes -out $2
+    openssl pkcs12 -in $1 -nocerts -nodes
 }
