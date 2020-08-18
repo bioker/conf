@@ -33,11 +33,13 @@ alias gbxt='./gradlew clean build -x test --parallel'
 alias gi='./gradlew buildImage --parallel'
 alias gt='./gradlew test --parallel'
 alias gr='./gradlew release -Prelease.useAutomaticVersion=true'
-alias gtasks='./gradlew tasks --all -q > /home/wls/.gradle_tasks' # caches current tasks of the project
-abbr -S -g --force --quiet gtask='`cat /home/wls/.gradle_tasks | fzf | cut -d " " -f1`' # runs the task that you choose in fzf
+alias gtasks='./gradlew tasks --all -q > ./.gradle/.gradle_tasks' # caches current tasks of the project
+abbr -S -g --force --quiet gtask='`cat ./.gradle/.gradle_tasks | fzf | cut -d " " -f1`' # runs the task that you choose in fzf
 abbr -S -g --force --quiet fprb='ffprobe -hide_banner'
 abbr -S -g --force --quiet kdev='kubectl -n develop'
 abbr -S -g --force --quiet ktest='kubectl -n test'
+abbr -S -g --force --quiet kair='kubectl -n airflow'
+abbr -S -g --force --quiet ap='ansible-playbook'
 alias gajava='git add \*.java'
 alias gasql='git add \*.sql'
 alias gaproto='git add \*.proto'
@@ -48,10 +50,13 @@ alias gdev='git checkout develop'
 alias gicc='git checkout -- .'
 alias gic='git checkout --'
 alias gis='git status'
+alias gip='git pull'
 alias gidh='git diff HEAD'
+alias gicb="git branch -a | fzf | tr -d '[:space:]' | tr -d '*' | xargs git checkout"
 alias now='date +%s%3N'
 alias jmx='java -jar /home/wls/Programs/jmxterm/jmxterm.jar'
 alias tf='terraform'
+alias passgen='cat /dev/urandom | head -c24 | base64'
 
 
 export PATH=$PATH:/home/wls/Programs/gradle/bin
