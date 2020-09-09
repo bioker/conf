@@ -6,7 +6,7 @@ ZSH_THEME="agnoster"
 
 plugins=(vi-mode z git tmux zsh-syntax-highlighting zsh-autosuggestions
   docker docker-compose kubectl minikube python pip colorize fzf
-  mongodb zsh-completions gcloud helm kafka-zsh-completions zsh-abbr)
+  mongodb zsh-completions gcloud helm kafka-zsh-completions zsh-abbr npm node)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -38,8 +38,13 @@ abbr -S -g --force --quiet gtask='`cat ./.gradle/.gradle_tasks | fzf | cut -d " 
 abbr -S -g --force --quiet fprb='ffprobe -hide_banner'
 abbr -S -g --force --quiet kdev='kubectl -n develop'
 abbr -S -g --force --quiet ktest='kubectl -n test'
+abbr -S -g --force --quiet kdis='kubectl -n discovery'
 abbr -S -g --force --quiet kair='kubectl -n airflow'
+abbr -S -g --force --quiet kaut='kubectl -n autotests'
 abbr -S -g --force --quiet ap='ansible-playbook'
+abbr -S -g --force --quiet k='kubectl'
+abbr -S -g --force --quiet ave='ansible-vault encrypt'
+abbr -S -g --force --quiet avd='ansible-vault decrypt'
 alias gajava='git add \*.java'
 alias gasql='git add \*.sql'
 alias gaproto='git add \*.proto'
@@ -50,13 +55,14 @@ alias gdev='git checkout develop'
 alias gicc='git checkout -- .'
 alias gic='git checkout --'
 alias gis='git status'
-alias gip='git pull'
+alias gipl='git pull'
+alias giph='git push'
 alias gidh='git diff HEAD'
 alias gicb="git branch -a | fzf | tr -d '[:space:]' | tr -d '*' | xargs git checkout"
 alias now='date +%s%3N'
 alias jmx='java -jar /home/wls/Programs/jmxterm/jmxterm.jar'
 alias tf='terraform'
-alias passgen='cat /dev/urandom | head -c24 | base64'
+alias passgen='cat /dev/urandom | head -c24 | md5sum | cut -d " " -f1 | tr -d $"\n"'
 
 
 export PATH=$PATH:/home/wls/Programs/gradle/bin
