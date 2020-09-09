@@ -80,6 +80,7 @@ ln -s /home/wls/Projects/my/vimconf /home/wls/.vim
 ln -s /home/wls/Projects/my/conf/curlrc /home/wls/.curlrc
 ln -s /home/wls/Projects/my/conf/tmux.conf /home/wls/.tmux.conf
 ln -s /home/wls/Projects/my/conf/zshrc /home/wls/.zshrc
+ln -s /home/wls/Projects/my/conf/tigrc /home/wls/.tigrc
 
 git clone https://github.com/tmux-plugins/tpm /home/wls/.tmux/plugins/tpm
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -88,6 +89,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-/home/w
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-/home/wls/.oh-my-zsh/custom}/plugins/zsh-completions
 git clone https://github.com/JamesKovacs/zsh_completions_mongodb.git ${ZSH_CUSTOM:-/home/wls/.oh-my-zsh/custom}/plugins/mongodb
 git clone https://github.com/bioker/kafka-zsh-completions.git ${ZSH_CUSTOM:-/home/wls/.oh-my-zsh/custom}/plugins/kafka-zsh-completions
+git clone https://github.com/olets/zsh-abbr.git ${ZSH_CUSTOM:-/home/wls/.oh-my-zsh/custom}/plugins/zsh-abbr
 
 chsh -s $(which zsh)
 
