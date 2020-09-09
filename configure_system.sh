@@ -3,7 +3,7 @@ mkdir -p /home/wls/Scripts/my
 mkdir -p /home/wls/Resources/my
 mkdir -p /home/wls/Programs
 
-sudo apt install git zsh gnome-tweaks cryptsetup curl ffmpeg fzf chromium-browser clickhouse-client cpulimit dconf-editor freeglut3-dev git-flow gnupg2 graphviz htop jq kafkacat libncurses5-dev libncursesw5-dev libsdl1.2-dev libsdl-image1.2 libsdl-ttf2.0-0 lm-sensors mongodb-clients moreutils mysql-client net-tools nmap nodejs opensc p7zip python python-dev python3-dev python3-pip python-pygments redis-tools silversearcher-ag steam-installer terminator tidy tig tmux traceroute virtualbox virtualbox-ext-pack vlc weechat xclip apt-transport-https ca-certificates gnupg-agent software-properties-common openjdk-14-jdk mesa-common-dev fonts-powerline pv dstat iftop protobuf-compiler translate-shell
+sudo apt install -y git zsh gnome-tweaks cryptsetup curl ffmpeg fzf chromium-browser clickhouse-client cpulimit dconf-editor freeglut3-dev git-flow gnupg2 graphviz htop jq kafkacat libncurses5-dev libncursesw5-dev libsdl1.2-dev libsdl-image1.2 libsdl-ttf2.0-0 lm-sensors mongodb-clients moreutils mysql-client net-tools nmap nodejs opensc p7zip python python-dev python3-dev python3-pip python-pygments redis-tools silversearcher-ag steam-installer terminator tidy tig tmux traceroute virtualbox virtualbox-ext-pack vlc weechat xclip apt-transport-https ca-certificates gnupg-agent software-properties-common openjdk-14-jdk mesa-common-dev fonts-powerline pv dstat iftop protobuf-compiler translate-shell
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
@@ -11,10 +11,10 @@ sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
-sudo apt install docker-ce docker-ce-cli containerd.io
+sudo apt install -y docker-ce docker-ce-cli containerd.io
 
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install ./google-chrome-stable_current_amd64.deb
+sudo apt install -y ./google-chrome-stable_current_amd64.deb
 rm ./google-chrome-stable_current_amd64.deb
 
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
@@ -22,19 +22,19 @@ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyr
 sudo apt update && sudo apt install google-cloud-sdk
 
 wget https://go.skype.com/skypeforlinux-64.deb
-sudo apt install ./skypeforlinux-64.deb
+sudo apt install -y ./skypeforlinux-64.deb
 rm ./skypeforlinux-64.deb
 
 wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.4.3-amd64.deb
-sudo apt install ./slack-desktop-*.deb
+sudo apt install -y ./slack-desktop-*.deb
 rm ./slack-desktop-*.deb
 
 wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
-sudo apt install ./teamviewer_amd64.deb
+sudo apt install -y ./teamviewer_amd64.deb
 rm ./teamviewer_amd64.deb
 
 wget https://github.com/dandavison/delta/releases/download/0.1.1/git-delta_0.1.1_amd64.deb
-sudo apt install ./git-delta_0.1.1_amd64.deb
+sudo apt install -y ./git-delta_0.1.1_amd64.deb
 rm ./git-delta_0.1.1_amd64.deb
 
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
@@ -48,6 +48,7 @@ rm kubelogin_linux_amd64.zip
 rm LICENSE
 
 curl -LO https://github.com/psycofdj/yaml-path/releases/download/v0.4/yaml-path-0.4.linux-amd64.tar.gz
+cat yaml-path-0.4.linux-amd64.tar.gz | tar xz
 sudo mv yaml-path-0.4.linux-amd64/yaml-path /usr/local/bin
 rm -r yaml-path-0.4.linux-amd64
 rm -r yaml-path-0.4.linux-amd64.tar.gz
