@@ -71,6 +71,12 @@ cat evans_linux_amd64.tar.gz | tar xz
 sudo mv evans /usr/local/bin
 rm -r evans_linux_amd64.tar.gz
 
+curl -LO https://services.gradle.org/distributions-snapshots/gradle-6.6.1-20200904230712+0000-bin.zip
+unzip gradle-6.6.1-20200904230712+0000-bin.zip
+mv gradle-6.6.1-20200904230712+0000 /home/wls/Programs
+ln -s /home/wls/Programs/gradle-6.6.1-20200904230712+0000 /home/wls/Programs/gradle
+rm -r gradle-6.6.1-20200904230712+0000-bin.zip
+
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 curl https://installer.id.ee/media/install-scripts/install-open-eid.sh | bash
 curl https://raw.githubusercontent.com/bioker/conf/master/configure_git.sh | bash
