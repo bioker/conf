@@ -66,6 +66,11 @@ sudo mv vault /usr/local/bin
 rm vault_1.4.2_linux_amd64.zip
 vault -autocomplete-install
 
+curl -LO https://github.com/ktr0731/evans/releases/download/0.9.1/evans_linux_amd64.tar.gz
+cat evans_linux_amd64.tar.gz | tar xz
+sudo mv evans /usr/local/bin
+rm -r evans_linux_amd64.tar.gz
+
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 curl https://installer.id.ee/media/install-scripts/install-open-eid.sh | bash
 curl https://raw.githubusercontent.com/bioker/conf/master/configure_git.sh | bash
