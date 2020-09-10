@@ -77,6 +77,12 @@ mv gradle-6.6.1-20200904230712+0000 /home/wls/Programs
 ln -s /home/wls/Programs/gradle-6.6.1-20200904230712+0000 /home/wls/Programs/gradle
 rm -r gradle-6.6.1-20200904230712+0000-bin.zip
 
+curl -LO https://dl.bintray.com/groovy/maven/apache-groovy-binary-3.0.5.zip
+unzip apache-groovy-binary-3.0.5.zip
+mv groovy-3.0.5 /home/wls/Programs
+ln -s /home/wls/Programs/groovy-3.0.5 /home/wls/Programs/groovy
+rm -r apache-groovy-binary-3.0.5.zip
+
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 curl https://installer.id.ee/media/install-scripts/install-open-eid.sh | bash
 curl https://raw.githubusercontent.com/bioker/conf/master/configure_git.sh | bash
