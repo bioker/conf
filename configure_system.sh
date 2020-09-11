@@ -88,6 +88,11 @@ cat openjdk-12.0.2_linux-x64_bin.tar.gz | tar xz
 sudo mv jdk-12.0.2 /usr/lib/jvm
 rm -r openjdk-12.0.2_linux-x64_bin.tar.gz
 
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
+sudo add-apt-repository ppa:rmescandon/yq
+sudo apt update
+sudo apt install yq -y
+
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 curl https://installer.id.ee/media/install-scripts/install-open-eid.sh | bash
 curl https://raw.githubusercontent.com/bioker/conf/master/configure_git.sh | bash
