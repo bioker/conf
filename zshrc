@@ -1,6 +1,15 @@
 rm ~/.zcompdump*
 
 export ZSH="/home/wls/.oh-my-zsh"
+export PATH=$PATH:/home/wls/Programs/gradle/bin
+export PATH=$PATH:/home/wls/Programs/groovy/bin
+export PATH=$PATH:/usr/lib/jvm/jdk-12.0.2/bin
+export PATH=$PATH:/home/wls/Programs/chromedriver
+export PATH=$PATH:/home/wls/Programs/evans
+export PATH=$PATH:/home/wls/Programs/kafka/bin
+export PATH=$PATH:/home/wls/.local/bin
+export JAVA_HOME=/usr/lib/jvm/jdk-12.0.2
+export GROOVY_HOME=/home/wls/Programs/groovy
 
 ZSH_THEME="agnoster"
 
@@ -67,17 +76,6 @@ alias now='date +%s%3N'
 alias jmx='java -jar /home/wls/Programs/jmxterm/jmxterm.jar'
 alias tf='terraform'
 alias passgen='cat /dev/urandom | head -c24 | md5sum | cut -d " " -f1 | tr -d $"\n"'
-
-
-export PATH=$PATH:/home/wls/Programs/gradle/bin
-export PATH=$PATH:/home/wls/Programs/groovy/bin
-export PATH=$PATH:/usr/lib/jvm/jdk-12.0.2/bin
-export PATH=$PATH:/home/wls/Programs/chromedriver
-export PATH=$PATH:/home/wls/Programs/evans
-export PATH=$PATH:/home/wls/Programs/kafka/bin
-export PATH=$PATH:/home/wls/.local/bin
-export JAVA_HOME=/usr/lib/jvm/jdk-12.0.2
-export GROOVY_HOME=/home/wls/Programs/groovy
 
 function optimizevideo {
     in_file_arg=${in_file:-"video.mp4"}
