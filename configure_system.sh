@@ -93,6 +93,8 @@ sudo add-apt-repository ppa:rmescandon/yq
 sudo apt update
 sudo apt install yq -y
 
+pip3 install --user ansible argcomplete
+
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 curl https://installer.id.ee/media/install-scripts/install-open-eid.sh | bash
 curl https://raw.githubusercontent.com/bioker/conf/master/configure_git.sh | bash
@@ -108,6 +110,7 @@ ln -s /home/wls/Projects/my/conf/curlrc /home/wls/.curlrc
 ln -s /home/wls/Projects/my/conf/tmux.conf /home/wls/.tmux.conf
 ln -s /home/wls/Projects/my/conf/zshrc /home/wls/.zshrc
 ln -s /home/wls/Projects/my/conf/tigrc /home/wls/.tigrc
+ln -s /home/wls/Projects/my/conf/configure_ansible_completion.sh /home/wls/.configure_ansible_completion.sh
 
 git clone https://github.com/tmux-plugins/tpm /home/wls/.tmux/plugins/tpm
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

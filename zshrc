@@ -10,14 +10,16 @@ plugins=(vi-mode z git tmux zsh-syntax-highlighting zsh-autosuggestions
 
 source $ZSH/oh-my-zsh.sh
 
+autoload -U +X bashcompinit && bashcompinit
+[[ -s "/home/wls/.jfrog/jfrog_zsh_completion" ]] && source "/home/wls/.jfrog/jfrog_zsh_completion"
+[[ -s "/home/wls/.configure_ansible_completion.sh" ]] && source "/home/wls/.configure_ansible_completion.sh"
+
 compdef _VBoxManage vm
 compdef _VBoxHeadless vmh
 
 alias e='vim ~/.zshrc'
 alias s='source ~/.zshrc'
 alias k='kubectl'
-alias ksc='kubectl config use-context'
-alias kgc='kubectl config get-contexts'
 alias d='sudo docker'
 alias dps='sudo docker ps'
 alias dip="sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
@@ -45,6 +47,8 @@ abbr -S -g --force --quiet ap='ansible-playbook'
 abbr -S -g --force --quiet k='kubectl'
 abbr -S -g --force --quiet ave='ansible-vault encrypt'
 abbr -S -g --force --quiet avd='ansible-vault decrypt'
+abbr -S -g --force --quiet ksc='kubectl config use-context'
+abbr -S -g --force --quiet kgc='kubectl config get-contexts'
 alias gajava='git add \*.java'
 alias gasql='git add \*.sql'
 alias gaproto='git add \*.proto'
