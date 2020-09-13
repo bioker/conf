@@ -1,6 +1,7 @@
 rm ~/.zcompdump*
 
 export ZSH="/home/wls/.oh-my-zsh"
+export SDKMAN_DIR=/home/wls/.sdkman
 export PATH=$PATH:/home/wls/Programs/gradle/bin
 export PATH=$PATH:/home/wls/Programs/groovy/bin
 export PATH=$PATH:/usr/lib/jvm/jdk-12.0.2/bin
@@ -10,6 +11,7 @@ export PATH=$PATH:/home/wls/Programs/kafka/bin
 export PATH=$PATH:/home/wls/.local/bin
 export JAVA_HOME=/usr/lib/jvm/jdk-12.0.2
 export GROOVY_HOME=/home/wls/Programs/groovy
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 
 ZSH_THEME="agnoster"
 
@@ -20,11 +22,27 @@ plugins=(vi-mode z git tmux zsh-syntax-highlighting zsh-autosuggestions
 source $ZSH/oh-my-zsh.sh
 
 autoload -U +X bashcompinit && bashcompinit
+
 [[ -s "/home/wls/.jfrog/jfrog_zsh_completion" ]] && source "/home/wls/.jfrog/jfrog_zsh_completion"
 [[ -s "/home/wls/.configure_ansible_completion.sh" ]] && source "/home/wls/.configure_ansible_completion.sh"
+[[ -s "/home/wls/.sdkman/bin/sdkman-init.sh" ]] && source "/home/wls/.sdkman/bin/sdkman-init.sh"
+[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+[[ -s "/home/wls/Crypto/Resources/conf/zshrc" ]] && source "/home/wls/Crypto/Resources/conf/zshrc"
 
 compdef _VBoxManage vm
 compdef _VBoxHeadless vmh
+complete -o nospace -C /usr/bin/vault vault
+complete -o nospace -C /usr/bin/terraform terraform
+
+eval $(register-python-argcomplete ansible)
+eval $(register-python-argcomplete ansible-config)
+eval $(register-python-argcomplete ansible-console)
+eval $(register-python-argcomplete ansible-doc)
+eval $(register-python-argcomplete ansible-galaxy)
+eval $(register-python-argcomplete ansible-inventory)
+eval $(register-python-argcomplete ansible-playbook)
+eval $(register-python-argcomplete ansible-pull)
+eval $(register-python-argcomplete ansible-vault)
 
 alias e='vim ~/.zshrc'
 alias s='source ~/.zshrc'

@@ -3,7 +3,7 @@ mkdir -p /home/wls/Scripts/my
 mkdir -p /home/wls/Resources/my
 mkdir -p /home/wls/Programs
 
-sudo apt install -y git zsh gnome-tweaks cryptsetup curl ffmpeg fzf chromium-browser clickhouse-client cpulimit dconf-editor freeglut3-dev git-flow gnupg2 graphviz htop jq kafkacat libncurses5-dev libncursesw5-dev libsdl1.2-dev libsdl-image1.2 libsdl-ttf2.0-0 lm-sensors mongodb-clients moreutils mysql-client net-tools nmap nodejs opensc p7zip python python-dev python3-dev python3-pip python-pygments redis-tools silversearcher-ag steam-installer terminator tidy tig tmux traceroute virtualbox virtualbox-ext-pack vlc weechat xclip apt-transport-https ca-certificates gnupg-agent software-properties-common mesa-common-dev fonts-powerline pv dstat iftop protobuf-compiler translate-shell npm
+sudo apt install -y git zsh gnome-tweaks cryptsetup curl ffmpeg fzf chromium-browser clickhouse-client cpulimit dconf-editor freeglut3-dev git-flow gnupg2 graphviz htop jq kafkacat libncurses5-dev libncursesw5-dev libsdl1.2-dev libsdl-image1.2 libsdl-ttf2.0-0 lm-sensors mongodb-clients moreutils mysql-client net-tools nmap nodejs opensc p7zip python python-dev python3-dev python3-pip python-pygments redis-tools silversearcher-ag steam-installer terminator tidy tig tmux traceroute virtualbox virtualbox-ext-pack vlc weechat xclip apt-transport-https ca-certificates gnupg-agent software-properties-common mesa-common-dev fonts-powerline pv dstat iftop protobuf-compiler translate-shell npm gparted
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
@@ -87,6 +87,12 @@ curl -LO https://download.java.net/java/GA/jdk12.0.2/e482c34c86bd4bf8b56c0b35558
 cat openjdk-12.0.2_linux-x64_bin.tar.gz | tar xz
 sudo mv jdk-12.0.2 /usr/lib/jvm
 rm -r openjdk-12.0.2_linux-x64_bin.tar.gz
+
+curl -LO https://get.helm.sh/helm-v2.16.10-linux-amd64.tar.gz
+cat helm-v2.16.10-linux-amd64.tar.gz | tar xz
+mv linux-amd64/helm /home/wls/.local/bin/helm2
+mv linux-amd64/tiller /home/wls/.local/bin/tiller
+rm -r helm-v2.16.10-linux-amd64.tar.gz linux-amd64
 
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
 sudo add-apt-repository ppa:rmescandon/yq
