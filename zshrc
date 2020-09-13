@@ -75,6 +75,7 @@ export PATH=$PATH:/usr/lib/jvm/jdk-12.0.2/bin
 export PATH=$PATH:/home/wls/Programs/chromedriver
 export PATH=$PATH:/home/wls/Programs/evans
 export PATH=$PATH:/home/wls/Programs/kafka/bin
+export PATH=$PATH:/home/wls/.local/bin
 export JAVA_HOME=/usr/lib/jvm/jdk-12.0.2
 export GROOVY_HOME=/home/wls/Programs/groovy
 
