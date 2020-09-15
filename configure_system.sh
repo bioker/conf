@@ -94,6 +94,10 @@ mv linux-amd64/helm /home/wls/.local/bin/helm2
 mv linux-amd64/tiller /home/wls/.local/bin/tiller
 rm -r helm-v2.16.10-linux-amd64.tar.gz linux-amd64
 
+curl -sLO https://raw.githubusercontent.com/rabbitmq/rabbitmq-management/v3.8.8/bin/rabbitmqadmin
+chmod +x rabbitmqadmin
+mv rabbitmqadmin /home/wls/.local/bin
+
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
 sudo add-apt-repository ppa:rmescandon/yq
 sudo apt update
