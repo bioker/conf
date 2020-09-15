@@ -98,6 +98,12 @@ curl -sLO https://raw.githubusercontent.com/rabbitmq/rabbitmq-management/v3.8.8/
 chmod +x rabbitmqadmin
 mv rabbitmqadmin /home/wls/.local/bin
 
+curl -sLO https://downloads.apache.org/kafka/2.6.0/kafka_2.13-2.6.0.tgz
+cat kafka_2.13-2.6.0.tgz | tar xz
+mv kafka_2.13-2.6.0 /home/wls/Programs
+ln -s /home/wls/Programs/kafka_2.13-2.6.0 /home/wls/Programs/kafka
+rm kafka_2.13-2.6.0.tgz
+
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
 sudo add-apt-repository ppa:rmescandon/yq
 sudo apt update
