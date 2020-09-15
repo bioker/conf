@@ -103,6 +103,10 @@ cat kafka_2.13-2.6.0.tgz | tar xz
 mv kafka_2.13-2.6.0 /home/wls/Programs
 ln -s /home/wls/Programs/kafka_2.13-2.6.0 /home/wls/Programs/kafka
 rm kafka_2.13-2.6.0.tgz
+for executable in /home/wls/Programs/kafka/bin/*.sh
+do
+    cp $executable ${executable%.*}
+done
 
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
 sudo add-apt-repository ppa:rmescandon/yq
