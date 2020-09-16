@@ -80,6 +80,7 @@ alias gipl='git pull'
 alias giph='git push'
 alias gidh='git diff HEAD'
 alias gicb="git branch -a | fzf | tr -d '[:space:]' | tr -d '*' | xargs git checkout"
+alias gicdf="echo \"clean all non-versioned files?\" && [[ 'yes' == \"\$(read temp; echo \$temp)\" ]] && git clean -df"
 alias now='date +%s%3N'
 alias jmx='java -jar /home/wls/Programs/jmxterm/jmxterm.jar'
 alias tf='terraform'
