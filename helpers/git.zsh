@@ -1,0 +1,15 @@
+alias gajava='git add \*.java'
+alias gasql='git add \*.sql'
+alias gaproto='git add \*.proto'
+alias gaprops='git add \*.properties'
+alias gpcb='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
+alias gccb='git rev-parse --abbrev-ref HEAD | xclip -selection c'
+alias gdev='git checkout develop'
+alias gicc='git checkout -- .'
+alias gic='git checkout --'
+alias gis='git status'
+alias gipl='git pull'
+alias giph='git push'
+alias gidh='git diff HEAD'
+alias gicb="git branch -a | fzf | tr -d '[:space:]' | tr -d '*' | xargs git checkout"
+alias gicdf="echo \"clean all non-versioned files?\" && [[ 'yes' == \"\$(read temp; echo \$temp)\" ]] && git clean -df"
