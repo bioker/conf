@@ -21,6 +21,7 @@ plugins=(vi-mode z git tmux zsh-syntax-highlighting zsh-autosuggestions
 
 source $ZSH/oh-my-zsh.sh
 
+autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 
 [[ -s "/home/wls/.jfrog/jfrog_zsh_completion" ]] && source "/home/wls/.jfrog/jfrog_zsh_completion"
@@ -49,7 +50,7 @@ alias vm='VBoxManage'
 alias vmh='VBoxHeadless'
 alias gb='./gradlew clean build --parallel'
 alias gbxt='./gradlew clean build -x test --parallel'
-alias gi='./gradlew buildImage --parallel'
+alias gbim='./gradlew buildImage --parallel'
 alias gt='./gradlew test --parallel'
 alias gr='./gradlew release -Prelease.useAutomaticVersion=true'
 alias gtasks='./gradlew tasks --all -q > ./.gradle/.gradle_tasks' # caches current tasks of the project
@@ -66,6 +67,9 @@ abbr -S -g --force --quiet ave='ansible-vault encrypt'
 abbr -S -g --force --quiet avd='ansible-vault decrypt'
 abbr -S -g --force --quiet ksc='kubectl config use-context'
 abbr -S -g --force --quiet kgc='kubectl config get-contexts'
+abbr -S -g --force --quiet getkubimgs='yq r - "spec.template.spec.containers[*].image"'
+abbr -S -g --force --quiet getkubimg='yq r - "spec.containers[*].image"'
+abbr -S -g --force --quiet xclp='xclip -selection c'
 alias gajava='git add \*.java'
 alias gasql='git add \*.sql'
 alias gaproto='git add \*.proto'
@@ -81,7 +85,8 @@ alias giph='git push'
 alias gidh='git diff HEAD'
 alias gicb="git branch -a | fzf | tr -d '[:space:]' | tr -d '*' | xargs git checkout"
 alias gicdf="echo \"clean all non-versioned files?\" && [[ 'yes' == \"\$(read temp; echo \$temp)\" ]] && git clean -df"
-alias now='date +%s%3N'
+alias epoch='date +%s%3N'
+alias now='date --rfc-3339=ns'
 alias jmx='java -jar /home/wls/Programs/jmxterm/jmxterm.jar'
 alias tf='terraform'
 alias passgen='cat /dev/urandom | head -c24 | md5sum | cut -d " " -f1 | tr -d $"\n"'
