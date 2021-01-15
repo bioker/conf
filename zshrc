@@ -8,9 +8,14 @@ export PATH=$PATH:/usr/lib/jvm/jdk-12.0.2/bin
 export PATH=$PATH:/home/wls/Programs/chromedriver
 export PATH=$PATH:/home/wls/Programs/evans
 export PATH=$PATH:/home/wls/Programs/kafka/bin
+export PATH=$PATH:/home/wls/Programs/node/bin
+export PATH=$PATH:/home/wls/Programs/mongoshell
+export PATH=$PATH:/home/wls/Programs/go/bin
+export PATH=$PATH:/home/wls/Programs/istio/bin
 export PATH=$PATH:/home/wls/.local/bin
 export JAVA_HOME=/usr/lib/jvm/jdk-12.0.2
 export GROOVY_HOME=/home/wls/Programs/groovy
+export GPG_TTY=$(tty)
 
 ZSH_THEME="agnoster"
 
@@ -34,3 +39,5 @@ autoload -U +X bashcompinit && bashcompinit
 [[ -s "/home/wls/Projects/my/conf/helpers/k8s.zsh" ]] && source "/home/wls/Projects/my/conf/helpers/k8s.zsh"
 #[[ -s "/home/wls/Projects/my/conf/helpers/media.zsh" ]] && source "/home/wls/Projects/my/conf/helpers/media.zsh"
 #[[ -s "/home/wls/Projects/my/conf/helpers/vm.zsh" ]] && source "/home/wls/Projects/my/conf/helpers/vm.zsh"
+
+complete -o nospace -C /usr/bin/terraform terraform
