@@ -16,6 +16,7 @@ export PATH=$PATH:/home/wls/.local/bin
 export JAVA_HOME=/usr/lib/jvm/jdk-12.0.2
 export GROOVY_HOME=/home/wls/Programs/groovy
 export GPG_TTY=$(tty)
+export MY_CONF_HOME=/home/wls/Projects/my/conf
 
 ZSH_THEME="agnoster"
 
@@ -30,14 +31,14 @@ autoload -U +X bashcompinit && bashcompinit
 
 [[ -s "/home/wls/Crypto/Resources/conf/zshrc" ]] && source "/home/wls/Crypto/Resources/conf/zshrc"
 #[[ -s "/home/wls/.sdkman/bin/sdkman-init.sh" ]] && source "/home/wls/.sdkman/bin/sdkman-init.sh"
-#[[ -s "/home/wls/Projects/my/conf/helpers/certs.sh" ]] && source "/home/wls/Projects/my/conf/helpers/certs.sh"
-[[ -s "/home/wls/Projects/my/conf/helpers/common.zsh" ]] && source "/home/wls/Projects/my/conf/helpers/common.zsh"
-#[[ -s "/home/wls/Projects/my/conf/helpers/devops.zsh" ]] && source "/home/wls/Projects/my/conf/helpers/devops.zsh"
-[[ -s "/home/wls/Projects/my/conf/helpers/docker.zsh" ]] && source "/home/wls/Projects/my/conf/helpers/docker.zsh"
-[[ -s "/home/wls/Projects/my/conf/helpers/git.zsh" ]] && source "/home/wls/Projects/my/conf/helpers/git.zsh"
-[[ -s "/home/wls/Projects/my/conf/helpers/gradle.zsh" ]] && source "/home/wls/Projects/my/conf/helpers/gradle.zsh"
-[[ -s "/home/wls/Projects/my/conf/helpers/k8s.zsh" ]] && source "/home/wls/Projects/my/conf/helpers/k8s.zsh"
-#[[ -s "/home/wls/Projects/my/conf/helpers/media.zsh" ]] && source "/home/wls/Projects/my/conf/helpers/media.zsh"
-#[[ -s "/home/wls/Projects/my/conf/helpers/vm.zsh" ]] && source "/home/wls/Projects/my/conf/helpers/vm.zsh"
+#[[ -s "$MY_CONF_HOME/helpers/certs.sh" ]] && source "$MY_CONF_HOME/helpers/certs.sh"
+[[ -s "$MY_CONF_HOME/helpers/common.zsh" ]] && source "$MY_CONF_HOME/helpers/common.zsh"
+#[[ -s "$MY_CONF_HOME/helpers/devops.zsh" ]] && source "$MY_CONF_HOME/helpers/devops.zsh"
+[[ -s "$MY_CONF_HOME/helpers/docker.zsh" ]] && source "$MY_CONF_HOME/helpers/docker.zsh"
+[[ -s "$MY_CONF_HOME/helpers/git.zsh" ]] && source "$MY_CONF_HOME/helpers/git.zsh"
+[[ -s "$MY_CONF_HOME/helpers/gradle.zsh" ]] && source "$MY_CONF_HOME/helpers/gradle.zsh"
+[[ -s "$MY_CONF_HOME/helpers/k8s.zsh" ]] && source "$MY_CONF_HOME/helpers/k8s.zsh"
+#[[ -s "$MY_CONF_HOME/helpers/media.zsh" ]] && source "$MY_CONF_HOME/helpers/media.zsh"
+#[[ -s "$MY_CONF_HOME/helpers/vm.zsh" ]] && source "$MY_CONF_HOME/helpers/vm.zsh"
 
 complete -o nospace -C /usr/bin/terraform terraform

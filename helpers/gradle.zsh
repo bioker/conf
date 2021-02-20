@@ -1,6 +1,7 @@
 alias gb='./gradlew clean build --parallel'
 alias gbxt='./gradlew clean build -x test --parallel'
 alias gbim='./gradlew buildImage --parallel'
+alias gbi='./gradlew dockerBuildImage'
 alias gt='./gradlew test --parallel'
 alias gr='./gradlew release -Prelease.useAutomaticVersion=true'
 alias gtasks='./gradlew tasks --all -q > ./.gradle/.gradle_tasks' # caches current tasks of the project

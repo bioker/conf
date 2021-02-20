@@ -14,3 +14,16 @@ abbr -S -g --force --quiet xclp='xclip -selection c'
 function agsed {
     ag -l $1 | xargs sed -i -e "s/$1/$2/g"
 }
+
+function hex_to_rgb {
+    hexinput=`echo $1 | tr '[:lower:]' '[:upper:]'`  # uppercase-ing
+    a=`echo $hexinput | cut -c-2`
+    b=`echo $hexinput | cut -c3-4`
+    c=`echo $hexinput | cut -c5-6`
+
+    r=`echo "ibase=16; $a" | bc`
+    g=`echo "ibase=16; $b" | bc`
+    b=`echo "ibase=16; $c" | bc`
+
+    echo "rgb($r, $g, $b)"
+}
