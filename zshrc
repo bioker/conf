@@ -33,12 +33,10 @@ autoload -U +X bashcompinit && bashcompinit
 #[[ -s "/home/wls/.sdkman/bin/sdkman-init.sh" ]] && source "/home/wls/.sdkman/bin/sdkman-init.sh"
 #[[ -s "$MY_CONF_HOME/helpers/certs.sh" ]] && source "$MY_CONF_HOME/helpers/certs.sh"
 [[ -s "$MY_CONF_HOME/helpers/common.zsh" ]] && source "$MY_CONF_HOME/helpers/common.zsh"
-#[[ -s "$MY_CONF_HOME/helpers/devops.zsh" ]] && source "$MY_CONF_HOME/helpers/devops.zsh"
+[[ -s "$MY_CONF_HOME/helpers/devops.zsh" ]] && source "$MY_CONF_HOME/helpers/devops.zsh"
 [[ -s "$MY_CONF_HOME/helpers/docker.zsh" ]] && source "$MY_CONF_HOME/helpers/docker.zsh"
 [[ -s "$MY_CONF_HOME/helpers/git.zsh" ]] && source "$MY_CONF_HOME/helpers/git.zsh"
 [[ -s "$MY_CONF_HOME/helpers/gradle.zsh" ]] && source "$MY_CONF_HOME/helpers/gradle.zsh"
 [[ -s "$MY_CONF_HOME/helpers/k8s.zsh" ]] && source "$MY_CONF_HOME/helpers/k8s.zsh"
 #[[ -s "$MY_CONF_HOME/helpers/media.zsh" ]] && source "$MY_CONF_HOME/helpers/media.zsh"
 #[[ -s "$MY_CONF_HOME/helpers/vm.zsh" ]] && source "$MY_CONF_HOME/helpers/vm.zsh"
-
-complete -o nospace -C /usr/bin/terraform terraform
