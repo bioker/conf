@@ -12,6 +12,8 @@ export PATH=$PATH:/home/wls/Programs/node/bin
 export PATH=$PATH:/home/wls/Programs/mongoshell
 export PATH=$PATH:/home/wls/Programs/go/bin
 export PATH=$PATH:/home/wls/Programs/istio/bin
+export PATH=$PATH:/home/wls/Programs/filebeat
+export PATH=$PATH:/home/wls/Programs/geckodriver
 export PATH=$PATH:/home/wls/.local/bin
 export JAVA_HOME=/usr/lib/jvm/jdk-12.0.2
 export GROOVY_HOME=/home/wls/Programs/groovy
@@ -21,10 +23,12 @@ export MY_CONF_HOME=/home/wls/Projects/my/conf
 ZSH_THEME="agnoster"
 
 plugins=(vi-mode z git tmux zsh-syntax-highlighting zsh-autosuggestions
-  docker docker-compose kubectl minikube python pip colorize fzf
+  docker docker-compose kubectl kubetail minikube python pip colorize fzf
   mongodb zsh-completions gcloud helm kafka-zsh-completions zsh-abbr npm node)
 
 source $ZSH/oh-my-zsh.sh
+
+fpath+=(~/.config/hcloud/completion/zsh)
 
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
@@ -40,3 +44,5 @@ autoload -U +X bashcompinit && bashcompinit
 [[ -s "$MY_CONF_HOME/helpers/k8s.zsh" ]] && source "$MY_CONF_HOME/helpers/k8s.zsh"
 #[[ -s "$MY_CONF_HOME/helpers/media.zsh" ]] && source "$MY_CONF_HOME/helpers/media.zsh"
 #[[ -s "$MY_CONF_HOME/helpers/vm.zsh" ]] && source "$MY_CONF_HOME/helpers/vm.zsh"
+
+[[ -s "/home/wls/Scripts/words.py" ]] && python3 "/home/wls/Scripts/words.py"

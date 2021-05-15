@@ -11,6 +11,7 @@ alias gipl='git pull'
 alias gipsh='git push'
 alias gidh='git diff HEAD'
 alias gicb="git branch -a | fzf | tr -d '[:space:]' | tr -d '*' | xargs git checkout"
+alias gicrb="git branch -a | fzf | tr -d '[:space:]' | rev | cut -d '/' -f1 | rev | xargs git checkout"
 alias gicdf="echo \"clean all non-versioned files?\" && [[ 'yes' == \"\$(read temp; echo \$temp)\" ]] && git clean -df"
 alias gidco="git log --left-right --cherry-pick --oneline"
 
@@ -21,6 +22,7 @@ abbr -S -g --force --quiet gicom='git commit -m'
 abbr -S -g --force --quiet gich='git checkout'
 abbr -S -g --force --quiet gichb='git checkout -b'
 abbr -S -g --force --quiet gipr='gh pr create --base develop --head $(git rev-parse --abbrev-ref HEAD)'
+abbr -S -g --force --quiet gilogf="--format='%ai,%h,%ae,%s'"
 
 function git_diff_commits {
     ref_left=$1
