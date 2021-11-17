@@ -1,4 +1,4 @@
-mkdir -p /home/wls/Projects/my
+mkdir -p /home/wls/Projects/Personal
 mkdir -p /home/wls/Scripts/my
 mkdir -p /home/wls/Resources/my
 mkdir -p /home/wls/Programs
@@ -126,15 +126,15 @@ curl https://raw.githubusercontent.com/bioker/conf/master/configure_vim.sh | bas
 
 # install ssh and gpg keys to proceed
 
-git clone git@github.com:bioker/vimconf.git /home/wls/Projects/my/vimconf
-git clone git@github.com:bioker/conf.git /home/wls/Projects/my/conf
+git clone git@github.com:bioker/vimconf.git /home/wls/Projects/Personal/vimconf
+git clone git@github.com:bioker/conf.git /home/wls/Projects/Personal/conf
 
-ln -s /home/wls/Projects/my/vimconf /home/wls/.vim
-ln -s /home/wls/Projects/my/conf/curlrc /home/wls/.curlrc
-ln -s /home/wls/Projects/my/conf/tmux.conf /home/wls/.tmux.conf
-ln -s /home/wls/Projects/my/conf/zshrc /home/wls/.zshrc
-ln -s /home/wls/Projects/my/conf/tigrc /home/wls/.tigrc
-ln -s /home/wls/Projects/my/conf/configure_ansible_completion.sh /home/wls/.configure_ansible_completion.sh
+ln -s /home/wls/Projects/Personal/vimconf /home/wls/.vim
+ln -s /home/wls/Projects/Personal/conf/curlrc /home/wls/.curlrc
+ln -s /home/wls/Projects/Personal/conf/tmux.conf /home/wls/.tmux.conf
+ln -s /home/wls/Projects/Personal/conf/zshrc /home/wls/.zshrc
+ln -s /home/wls/Projects/Personal/conf/tigrc /home/wls/.tigrc
+ln -s /home/wls/Projects/Personal/conf/configure_ansible_completion.sh /home/wls/.configure_ansible_completion.sh
 
 git clone https://github.com/tmux-plugins/tpm /home/wls/.tmux/plugins/tpm
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
