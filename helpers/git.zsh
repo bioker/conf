@@ -1,3 +1,4 @@
+alias gipl='git pull'
 alias gpcb='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
 alias gccb='git rev-parse --abbrev-ref HEAD | xclip -selection c'
 alias gic='git checkout --'
