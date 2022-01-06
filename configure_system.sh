@@ -21,6 +21,12 @@ echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 sudo apt update && sudo apt install google-cloud-sdk
 
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o awscliv2.zip
+unzip awscliv2.zip
+sudo ./aws/install
+rm -r aws
+rm awscliv2.zip
+
 wget https://github.com/dandavison/delta/releases/download/0.1.1/git-delta_0.1.1_amd64.deb
 sudo apt install -y ./git-delta_0.1.1_amd64.deb
 rm ./git-delta_0.1.1_amd64.deb
@@ -29,7 +35,7 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s http
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
-curl -LO https://github.com/int128/kubelogin/releases/download/v1.19.1/kubelogin_linux_amd64.zip
+curl -LO https://github.com/int128/kubelogin/releases/download/v1.25.0/kubelogin_linux_amd64.zip
 unzip kubelogin_linux_amd64.zip
 sudo mv kubelogin /usr/local/bin/kubectl-oidc_login
 rm kubelogin_linux_amd64.zip
@@ -38,63 +44,35 @@ rm LICENSE
 sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
-curl -LO https://releases.hashicorp.com/vault/1.4.2/vault_1.4.2_linux_amd64.zip
-unzip vault_1.4.2_linux_amd64.zip
-sudo mv vault /usr/local/bin
-rm vault_1.4.2_linux_amd64.zip
-vault -autocomplete-install
-
-curl -LO https://github.com/ktr0731/evans/releases/download/0.9.1/evans_linux_amd64.tar.gz
+curl -LO https://github.com/ktr0731/evans/releases/download/0.10.0/evans_linux_amd64.tar.gz
 cat evans_linux_amd64.tar.gz | tar xz
 sudo mv evans /usr/local/bin
 rm -r evans_linux_amd64.tar.gz
 
-curl -LO https://services.gradle.org/distributions-snapshots/gradle-6.6.1-20200904230712+0000-bin.zip
-unzip gradle-6.6.1-20200904230712+0000-bin.zip
-mv gradle-6.6.1-20200904230712+0000 /home/wls/Programs
-ln -s /home/wls/Programs/gradle-6.6.1-20200904230712+0000 /home/wls/Programs/gradle
-rm -r gradle-6.6.1-20200904230712+0000-bin.zip
+curl -LO https://github.com/fluxcd/flux2/releases/download/v0.24.1/flux_0.24.1_linux_amd64.tar.gz
+cat flux_0.24.1_linux_amd64.tar.gz | tar xz
+sudo mv flux /usr/local/bin
+rm -r flux_0.24.1_linux_amd64.tar.gz
 
-curl -LO https://download.java.net/java/GA/jdk12.0.2/e482c34c86bd4bf8b56c0b35558996b9/10/GPL/openjdk-12.0.2_linux-x64_bin.tar.gz
-cat openjdk-12.0.2_linux-x64_bin.tar.gz | tar xz
-sudo mv jdk-12.0.2 /usr/lib/jvm
-rm -r openjdk-12.0.2_linux-x64_bin.tar.gz
-
-curl -LO https://get.helm.sh/helm-v2.16.10-linux-amd64.tar.gz
-cat helm-v2.16.10-linux-amd64.tar.gz | tar xz
-mv linux-amd64/helm /home/wls/.local/bin/helm2
-mv linux-amd64/tiller /home/wls/.local/bin/tiller
-rm -r helm-v2.16.10-linux-amd64.tar.gz linux-amd64
-
-curl -sLO https://raw.githubusercontent.com/rabbitmq/rabbitmq-management/v3.8.8/bin/rabbitmqadmin
-chmod +x rabbitmqadmin
-mv rabbitmqadmin /home/wls/.local/bin
-
-curl -sLO https://downloads.apache.org/kafka/2.6.0/kafka_2.13-2.6.0.tgz
-cat kafka_2.13-2.6.0.tgz | tar xz
-mv kafka_2.13-2.6.0 /home/wls/Programs
-ln -s /home/wls/Programs/kafka_2.13-2.6.0 /home/wls/Programs/kafka
-rm kafka_2.13-2.6.0.tgz
-for executable in /home/wls/Programs/kafka/bin/*.sh
-do
-    cp $executable ${executable%.*}
-done
+curl -LO https://download.java.net/java/GA/jdk15.0.2/0d1cfde4252546c6931946de8db48ee2/7/GPL/openjdk-15.0.2_linux-x64_bin.tar.gz
+cat openjdk-15.0.2_linux-x64_bin.tar.gz | tar xz
+sudo mkdir -p /usr/lib/jvm
+sudo mv jdk-15.0.2 /usr/lib/jvm
+rm -r openjdk-15.0.2_linux-x64_bin.tar.gz
 
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
 sudo add-apt-repository ppa:rmescandon/yq
-sudo apt update
 sudo apt install yq -y
-
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
-sudo apt-add-repository -u https://cli.github.com/packages
-sudo apt install gh
 
 pip3 install --user ansible argcomplete
 
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 curl https://installer.id.ee/media/install-scripts/install-open-eid.sh | bash
-curl https://raw.githubusercontent.com/bioker/conf/master/configure_git.sh | bash
-curl https://raw.githubusercontent.com/bioker/conf/master/configure_vim.sh | bash
+cat configure_git.sh | bash
+cat configure_vim.sh | bash
+
+git clone https://github.com/tfutils/tfenv.git ~/.tfenv
+sudo ln -s ~/.tfenv/bin/* /usr/local/bin
 
 # install ssh and gpg keys to proceed
 
@@ -110,12 +88,13 @@ ln -s /home/wls/Projects/Personal/conf/configure_ansible_completion.sh /home/wls
 
 git clone https://github.com/tmux-plugins/tpm /home/wls/.tmux/plugins/tpm
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-/home/wls/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-/home/wls/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-/home/wls/.oh-my-zsh/custom}/plugins/zsh-completions
-git clone https://github.com/JamesKovacs/zsh_completions_mongodb.git ${ZSH_CUSTOM:-/home/wls/.oh-my-zsh/custom}/plugins/mongodb
-git clone https://github.com/bioker/kafka-zsh-completions.git ${ZSH_CUSTOM:-/home/wls/.oh-my-zsh/custom}/plugins/kafka-zsh-completions
-git clone https://github.com/olets/zsh-abbr.git ${ZSH_CUSTOM:-/home/wls/.oh-my-zsh/custom}/plugins/zsh-abbr
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
+git clone https://github.com/JamesKovacs/zsh_completions_mongodb.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/mongodb
+git clone https://github.com/bioker/kafka-zsh-completions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/kafka-zsh-completions
+git clone https://github.com/olets/zsh-abbr.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-abbr
+git clone https://github.com/macunha1/zsh-terraform ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/terraform
 
 chsh -s $(which zsh)
 

@@ -60,3 +60,7 @@ vlc
 weechat
 xclip
 zsh
+wireguard
+resolvconf
+pulseaudio
+pavucontrol
