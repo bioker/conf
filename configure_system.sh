@@ -60,6 +60,40 @@ sudo mkdir -p /usr/lib/jvm
 sudo mv jdk-15.0.2 /usr/lib/jvm
 rm -r openjdk-15.0.2_linux-x64_bin.tar.gz
 
+curl -LO https://go.dev/dl/go1.17.6.linux-amd64.tar.gz
+cat go1.17.6.linux-amd64.tar.gz | tar xz
+rm -f /home/wls/Programs/go /home/wls/Programs/go1.17.6
+mv go /home/wls/Programs/go1.17.6
+ln -s /home/wls/Programs/go1.17.6 /home/wls/Programs/go
+rm go1.17.6.linux-amd64.tar.gz
+
+curl -LO https://github.com/operator-framework/operator-sdk/releases/download/v1.15.0/operator-sdk_linux_amd64
+curl -LO https://github.com/operator-framework/operator-sdk/releases/download/v1.15.0/helm-operator_linux_amd64
+curl -LO https://github.com/operator-framework/operator-sdk/releases/download/v1.15.0/ansible-operator_linux_amd64
+
+chmod 774 ansible-operator_linux_amd64 helm-operator_linux_amd64 operator-sdk_linux_amd64
+
+sudo mv operator-sdk_linux_amd64 /usr/local/bin/operator-sdk
+sudo mv ansible-operator_linux_amd64 /usr/local/bin/ansible-operator
+sudo mv helm-operator_linux_amd64 /usr/local/bin/helm-operator
+
+curl -LO https://github.com/JetBrains/kotlin/releases/download/v1.6.10/kotlin-compiler-1.6.10.zip
+unzip kotlin-compiler-1.6.10.zip
+mv kotlinc /home/wls/Programs/kotlinc1.6.10
+ln -s /home/wls/Programs/kotlinc1.6.10 /home/wls/Programs/kotlinc
+rm kotlin-compiler-1.6.10.zip
+
+
+curl -LO https://github.com/rancher/rke/releases/download/v1.3.4/rke_linux-amd64
+mv rke_linux-amd64 rke
+chmod +x rke
+sudo mv rke /usr/local/bin
+
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+rm minikube-linux-amd64
+
+
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
 sudo add-apt-repository ppa:rmescandon/yq
 sudo apt install yq -y

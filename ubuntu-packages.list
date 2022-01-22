@@ -64,3 +64,4 @@ wireguard
 resolvconf
 pulseaudio
 pavucontrol
+postgresql-client
