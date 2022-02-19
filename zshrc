@@ -2,7 +2,6 @@ rm ~/.zcompdump*
 
 export ZSH="/home/wls/.oh-my-zsh"
 export PATH=$PATH:/home/wls/.local/bin
-export PATH=$PATH:/home/wls/.linkerd2/bin
 export GPG_TTY=$(tty)
 export MY_CONF_HOME=/home/wls/Projects/Personal/conf
 
@@ -27,5 +26,8 @@ command -v flux >/dev/null && . <(flux completion zsh)
 [[ -s "$MY_CONF_HOME/helpers/git.zsh" ]] && source "$MY_CONF_HOME/helpers/git.zsh"
 [[ -s "$MY_CONF_HOME/helpers/gradle.zsh" ]] && source "$MY_CONF_HOME/helpers/gradle.zsh"
 [[ -s "$MY_CONF_HOME/helpers/k8s.zsh" ]] && source "$MY_CONF_HOME/helpers/k8s.zsh"
+
+alias env-aws-work='source /home/wls/.aws_work.zsh'
+alias env-aws-personal='source /home/wls/.aws_personal.zsh'
 
 [[ -s "/home/wls/Scripts/words.py" ]] && python3 "/home/wls/Scripts/words.py"

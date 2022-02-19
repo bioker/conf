@@ -120,6 +120,10 @@ ln -s /home/wls/Projects/Personal/conf/zshrc /home/wls/.zshrc
 ln -s /home/wls/Projects/Personal/conf/tigrc /home/wls/.tigrc
 ln -s /home/wls/Projects/Personal/conf/configure_ansible_completion.sh /home/wls/.configure_ansible_completion.sh
 
+sudo mkdir -p /usr/local/share/applications
+sudo ln -s /home/wls/Projects/Personal/conf/desktop-entries/freecad.desktop /usr/local/share/applications/freecad.desktop
+sudo ln -s /home/wls/Projects/Personal/conf/desktop-entries/cura.desktop /usr/local/share/applications/cura.desktop
+
 git clone https://github.com/tmux-plugins/tpm /home/wls/.tmux/plugins/tpm
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting

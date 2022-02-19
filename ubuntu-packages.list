@@ -65,3 +65,5 @@ resolvconf
 pulseaudio
 pavucontrol
 postgresql-client
+sysstat
+stress
