@@ -5,7 +5,12 @@ export PATH=$PATH:/home/wls/.local/bin
 export GPG_TTY=$(tty)
 export MY_CONF_HOME=/home/wls/Projects/Personal/conf
 
+[[ ! -s "/home/wls/.oh-my-zsh/themes/agnoster-light.zsh-theme" ]] && wget -O /home/wls/.oh-my-zsh/themes/agnoster-light.zsh-theme https://raw.githubusercontent.com/mkolosick/agnoster-light/master/agnoster-light.zsh-theme
+
 ZSH_THEME="agnoster"
+
+#ZSH_THEME="agnoster-light"
+#export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=23' # use for agnoster-light theme
 
 plugins=(z git tmux zsh-syntax-highlighting zsh-autosuggestions
   docker docker-compose kubectl minikube python pip colorize fzf
@@ -29,5 +34,11 @@ command -v flux >/dev/null && . <(flux completion zsh)
 
 alias env-aws-work='source /home/wls/.aws_work.zsh'
 alias env-aws-personal='source /home/wls/.aws_personal.zsh'
+
+alias env-hcloud-work='source /home/wls/.hcloud_work.zsh'
+alias env-hcloud-personal='source /home/wls/.hcloud_personal.zsh'
+
+alias terminal-theme-dark='cat /home/wls/Projects/Personal/conf/gnome-terminal-dark.dconf | dconf load /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/'
+alias terminal-theme-light='cat /home/wls/Projects/Personal/conf/gnome-terminal-light.dconf | dconf load /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/'
 
 [[ -s "/home/wls/Scripts/words.py" ]] && python3 "/home/wls/Scripts/words.py"
