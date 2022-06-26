@@ -9,5 +9,3 @@ git config --global core.pager 'delta --keep-plus-minus-markers --plus-color="#0
 git config --global interactive.diffFilter 'delta --color-only'
 
 git config --global push.default simple
-git config --global user.signingkey C1A1019C
-git config --global commit.gpgsign true
