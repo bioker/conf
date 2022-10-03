@@ -1,5 +1,6 @@
-[[ -s "/home/wls/.configure_ansible_completion.sh" ]] && source "/home/wls/.configure_ansible_completion.sh"
+#[[ -s "/home/wls/.configure_ansible_completion.sh" ]] && source "/home/wls/.configure_ansible_completion.sh"
 
+[[ ! -d "$HOME/.tfenv" ]] && git clone --depth=1 https://github.com/tfutils/tfenv.git ~/.tfenv
 export PATH="$HOME/.tfenv/bin:$PATH"
 
 abbr -S -g --force --quiet ap='ansible-playbook'

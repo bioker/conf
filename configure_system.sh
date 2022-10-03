@@ -1,83 +1,174 @@
-mkdir -p /home/wls/Projects/Personal
-mkdir -p /home/wls/Scripts/my
-mkdir -p /home/wls/Resources/my
-mkdir -p /home/wls/Programs
+mkdir -p ~/Projects
+mkdir -p ~/Scripts
+mkdir -p ~/Resources
+mkdir -p ~/Programs
 
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install -y ./google-chrome-stable_current_amd64.deb
-rm ./google-chrome-stable_current_amd64.deb
+packages="
+apt-transport-https
+ca-certificates
+containerd
+cpulimit
+cryptsetup
+curl
+dconf-editor
+docker
+docker-compose
+docker.io
+dstat
+ffmpeg
+fonts-powerline
+freeglut3-dev
+fzf
+geoip-bin
+git
+gnome-tweaks
+gnupg2
+gnupg-agent
+gparted
+graphviz
+htop
+iftop
+jq
+libncurses5-dev
+libncursesw5-dev
+libsdl1.2-dev
+libsdl-image1.2
+libsdl-ttf2.0-0
+lm-sensors
+mesa-common-dev
+moreutils
+mysql-client
+net-tools
+nmap
+nodejs
+npm
+opensc
+p7zip
+pavucontrol
+postgresql-client
+protobuf-compiler
+pulseaudio
+pv
+python3-dev
+python3-pip
+redis-tools
+resolvconf
+silversearcher-ag
+software-properties-common
+steam-installer
+stress
+sysstat
+tidy
+tig
+tmux
+traceroute
+translate-shell
+vim-gtk3
+virtualbox
+virtualbox-ext-pack
+vlc
+weechat
+whois
+wireguard
+wireshark
+xclip
+zsh
+"
+sudo apt install $(echo $packages)
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin
 
-curl -LO https://github.com/ktr0731/evans/releases/download/0.10.0/evans_linux_amd64.tar.gz
-cat evans_linux_amd64.tar.gz | tar xz
-sudo mv evans /usr/local/bin
-rm -r evans_linux_amd64.tar.gz
+curl -LO https://github.com/int128/kubelogin/releases/download/v1.25.3/kubelogin_linux_amd64.zip
+unzip kubelogin_linux_amd64.zip
+rm kubelogin_linux_amd64.zip LICENSE README.md
+sudo mv kubelogin /usr/local/bin/kubectl-oidc_login
 
-curl -LO https://download.java.net/java/GA/jdk15.0.2/0d1cfde4252546c6931946de8db48ee2/7/GPL/openjdk-15.0.2_linux-x64_bin.tar.gz
-cat openjdk-15.0.2_linux-x64_bin.tar.gz | tar xz
-sudo mkdir -p /usr/lib/jvm
-sudo mv jdk-15.0.2 /usr/lib/jvm
-rm -r openjdk-15.0.2_linux-x64_bin.tar.gz
+curl -L https://get.helm.sh/helm-v3.10.0-linux-amd64.tar.gz | tar xz
+chmod +x linux-amd64/helm
+sudo mv linux-amd64/helm /usr/local/bin
+rm -r linux-amd64
 
-curl -LO https://go.dev/dl/go1.17.6.linux-amd64.tar.gz
-cat go1.17.6.linux-amd64.tar.gz | tar xz
-rm -f /home/wls/Programs/go /home/wls/Programs/go1.17.6
-mv go /home/wls/Programs/go1.17.6
-ln -s /home/wls/Programs/go1.17.6 /home/wls/Programs/go
-rm go1.17.6.linux-amd64.tar.gz
+curl -L https://github.com/fluxcd/flux2/releases/download/v0.34.0/flux_0.34.0_linux_amd64.tar.gz | tar xz
+sudo mv flux /usr/local/bin
 
-curl -LO https://github.com/operator-framework/operator-sdk/releases/download/v1.15.0/operator-sdk_linux_amd64
-curl -LO https://github.com/operator-framework/operator-sdk/releases/download/v1.15.0/helm-operator_linux_amd64
-curl -LO https://github.com/operator-framework/operator-sdk/releases/download/v1.15.0/ansible-operator_linux_amd64
+curl -L https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip
+sudo ./aws/install
+rm -r aws awscliv2.zip
 
-chmod 774 ansible-operator_linux_amd64 helm-operator_linux_amd64 operator-sdk_linux_amd64
+curl -L https://github.com/hetznercloud/cli/releases/download/v1.30.3/hcloud-linux-amd64.tar.gz | tar xz
+rm LICENSE README.md
+sudo mv hcloud /usr/local/bin
 
-sudo mv operator-sdk_linux_amd64 /usr/local/bin/operator-sdk
-sudo mv ansible-operator_linux_amd64 /usr/local/bin/ansible-operator
-sudo mv helm-operator_linux_amd64 /usr/local/bin/helm-operator
+curl -LO https://github.com/dandavison/delta/releases/download/0.14.0/git-delta_0.14.0_amd64.deb
+sudo apt install ./git-delta_0.14.0_amd64.deb
+rm git-delta_0.14.0_amd64.deb
 
-curl -LO https://github.com/JetBrains/kotlin/releases/download/v1.6.10/kotlin-compiler-1.6.10.zip
-unzip kotlin-compiler-1.6.10.zip
-mv kotlinc /home/wls/Programs/kotlinc1.6.10
-ln -s /home/wls/Programs/kotlinc1.6.10 /home/wls/Programs/kotlinc
-rm kotlin-compiler-1.6.10.zip
+curl -LO https://github.com/mikefarah/yq/releases/download/v4.27.5/yq_linux_amd64
+chmod +x yq_linux_amd64
+sudo mv yq_linux_amd64 /usr/local/bin/yq
 
-curl -LO https://github.com/rancher/rke/releases/download/v1.3.4/rke_linux-amd64
-mv rke_linux-amd64 rke
-chmod +x rke
-sudo mv rke /usr/local/bin
+echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+wget -O- https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+sudo apt-get update && sudo apt-get install google-cloud-cli
 
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-sudo install minikube-linux-amd64 /usr/local/bin/minikube
-rm minikube-linux-amd64
+sudo curl -sL https://github.com/projectcalico/calico/releases/download/v3.24.1/calicoctl-linux-amd64 -o /usr/local/bin/calicoctl && sudo chmod +x /usr/local/bin/calicoctl
 
-wget https://dl.step.sm/gh-release/cli/docs-cli-install/v0.18.1/step-cli_0.18.1_amd64.deb
-sudo dpkg -i step-cli_0.18.1_amd64.deb
-rm step-cli_0.18.1_amd64.deb
+curl -LO https://github.com/cli/cli/releases/download/v2.16.1/gh_2.16.1_linux_amd64.deb
+sudo apt install ./gh_2.16.1_linux_amd64.deb
+rm ./gh_2.16.1_linux_amd64.deb
 
-curl https://installer.id.ee/media/install-scripts/install-open-eid.sh | bash
-cat configure_git.sh | bash
-cat configure_vim.sh | bash
+wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.18.5/kubeseal-0.18.5-linux-amd64.tar.gz
+tar -xvzf kubeseal-0.18.5-linux-amd64.tar.gz kubeseal
+sudo install -m 755 kubeseal /usr/local/bin/kubeseal
+rm kubeseal-0.18.5-linux-amd64.tar.gz kubeseal
 
-# install ssh and gpg keys to proceed
+curl -sL https://github.com/itaysk/kubectl-neat/releases/download/v2.0.3/kubectl-neat_linux_amd64.tar.gz | tar xz
+sudo mv kubectl-neat /usr/local/bin
+rm LICENSE
 
-git clone git@github.com:bioker/vimconf.git /home/wls/Projects/Personal/vimconf
-git clone git@github.com:bioker/conf.git /home/wls/Projects/Personal/conf
+git config --global user.name 'Viktor Vlasov'
+git config --global user.email 'viktorvlasovsiberian@gmail.com'
 
-ln -s /home/wls/Projects/Personal/vimconf /home/wls/.vim
-ln -s /home/wls/Projects/Personal/conf/curlrc /home/wls/.curlrc
-ln -s /home/wls/Projects/Personal/conf/tmux.conf /home/wls/.tmux.conf
-ln -s /home/wls/Projects/Personal/conf/zshrc /home/wls/.zshrc
-ln -s /home/wls/Projects/Personal/conf/tigrc /home/wls/.tigrc
-ln -s /home/wls/Projects/Personal/conf/configure_ansible_completion.sh /home/wls/.configure_ansible_completion.sh
+git config --global core.autocrlf input
+git config --global core.quotepath false
+git config --global diff.tool 'vimdiff'
+git config --global merge.tool 'vimdiff'
+git config --global core.pager 'delta --keep-plus-minus-markers --plus-style "#00FF00" --minus-style "#FF0000"'
+git config --global interactive.diffFilter 'delta --color-only'
 
-sudo mkdir -p /usr/local/share/applications
-sudo ln -s /home/wls/Projects/Personal/conf/desktop-entries/freecad.desktop /usr/local/share/applications/freecad.desktop
-sudo ln -s /home/wls/Projects/Personal/conf/desktop-entries/cura.desktop /usr/local/share/applications/cura.desktop
+git config --global push.default simple
+git config --global user.signingkey C1A1019C
+git config --global commit.gpgsign true
 
-git clone https://github.com/tmux-plugins/tpm /home/wls/.tmux/plugins/tpm
+echo "-w \"\\n\"" > ~/.curlrc
+echo "set commit-order = date" > ~/.tigrc
+
+cat <<EOT > ~/.tmux.conf
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
+set -g @plugin 'bioker/yatsl'
+
+set -g default-terminal "screen-256color"
+set -g status-right-length 200
+set -g status-interval 1
+set -g status-right '#{prefix_highlight}|#{colored_cpu}|#{colored_memory}|#{colored_battery}|#{colored_online}| %H:%M:%S '
+
+set-window-option -g mode-keys vi
+
+bind v copy-mode
+bind R source-file '~/.tmux.conf'
+bind -n M-h select-pane -L
+bind -n M-l select-pane -R
+bind -n M-k select-pane -U
+bind -n M-j select-pane -D
+
+run -b '~/.tmux/plugins/tpm/tpm'
+EOT
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -86,6 +177,16 @@ git clone https://github.com/JamesKovacs/zsh_completions_mongodb.git ${ZSH_CUSTO
 git clone https://github.com/bioker/kafka-zsh-completions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/kafka-zsh-completions
 git clone https://github.com/olets/zsh-abbr.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-abbr
 git clone https://github.com/macunha1/zsh-terraform ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/terraform
+
+# install ssh and gpg keys to proceed
+
+git clone git@github.com:bioker/vimconf.git ~/Projects/Personal/vimconf
+git clone git@github.com:bioker/conf.git ~/Projects/Personal/conf
+
+ln -s ~/Projects/Personal/vimconf ~/.vim
+ln -s ~/Projects/Personal/vimconf/vimrc ~/.vimrc
+ln -s ~/Projects/Personal/conf/zshrc ~/.zshrc
+ln -s ~/Projects/Personal/conf/configure_ansible_completion.sh ~/.configure_ansible_completion.sh
 
 chsh -s $(which zsh)
 
