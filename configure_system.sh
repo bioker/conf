@@ -94,6 +94,7 @@ curl -L https://github.com/fluxcd/flux2/releases/download/v0.34.0/flux_0.34.0_li
 sudo mv flux /usr/local/bin
 
 curl -L https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip
+unzip awscliv2.zip
 sudo ./aws/install
 rm -r aws awscliv2.zip
 
