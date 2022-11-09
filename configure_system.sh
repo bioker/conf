@@ -90,7 +90,7 @@ chmod +x linux-amd64/helm
 sudo mv linux-amd64/helm /usr/local/bin
 rm -r linux-amd64
 
-curl -L https://github.com/fluxcd/flux2/releases/download/v0.34.0/flux_0.34.0_linux_amd64.tar.gz | tar xz
+curl -L https://github.com/fluxcd/flux2/releases/download/v0.35.0/flux_0.35.0_linux_amd64.tar.gz | tar xz
 sudo mv flux /usr/local/bin
 
 curl -L https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip
@@ -129,6 +129,18 @@ curl -sL https://github.com/itaysk/kubectl-neat/releases/download/v2.0.3/kubectl
 sudo mv kubectl-neat /usr/local/bin
 rm LICENSE
 
+wget https://dl.step.sm/gh-release/cli/gh-release-header/v0.22.0/step-cli_0.22.0_amd64.deb
+sudo apt install ./step-cli_0.22.0_amd64.deb
+rm step-cli_0.22.0_amd64.deb
+
+curl -sLO https://github.com/linkerd/linkerd2/releases/download/stable-2.12.1/linkerd2-cli-stable-2.12.1-linux-amd64
+chmod +x linkerd2-cli-stable-2.12.1-linux-amd64
+sudo mv linkerd2-cli-stable-2.12.1-linux-amd64 /usr/local/bin/linkerd
+
+curl -sL https://github.com/derailed/k9s/releases/download/v0.26.7/k9s_Linux_x86_64.tar.gz | tar xz
+rm LICENSE README.md
+sudo mv k9s /usr/local/bin
+
 git config --global user.name 'Viktor Vlasov'
 git config --global user.email 'viktorvlasovsiberian@gmail.com'
 
@@ -155,6 +167,7 @@ set -g @plugin 'bioker/yatsl'
 set -g default-terminal "screen-256color"
 set -g status-right-length 200
 set -g status-interval 1
+set -g history-limit 50000
 set -g status-right '#{prefix_highlight}|#{colored_cpu}|#{colored_memory}|#{colored_battery}|#{colored_online}| %H:%M:%S '
 
 set-window-option -g mode-keys vi
