@@ -1,6 +1,7 @@
 export PATH=$PATH:/home/wls/Programs/evans
 export PATH=$PATH:/home/wls/Programs/go/bin
 export PATH=$PATH:/home/wls/Programs/kotlinc/bin
+export PATH=$PATH:/home/wls/Programs/kafka/bin
 
 export GOPATH=/home/wls/.go
 export NVM_DIR="$HOME/.nvm"

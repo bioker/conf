@@ -98,7 +98,7 @@ unzip awscliv2.zip
 sudo ./aws/install
 rm -r aws awscliv2.zip
 
-curl -L https://github.com/hetznercloud/cli/releases/download/v1.30.3/hcloud-linux-amd64.tar.gz | tar xz
+curl -L https://github.com/hetznercloud/cli/releases/download/v1.31.1/hcloud-linux-amd64.tar.gz | tar xz
 rm LICENSE README.md
 sudo mv hcloud /usr/local/bin
 
@@ -140,6 +140,11 @@ sudo mv linkerd2-cli-stable-2.12.1-linux-amd64 /usr/local/bin/linkerd
 curl -sL https://github.com/derailed/k9s/releases/download/v0.26.7/k9s_Linux_x86_64.tar.gz | tar xz
 rm LICENSE README.md
 sudo mv k9s /usr/local/bin
+
+wget https://releases.hashicorp.com/packer/1.8.5/packer_1.8.5_linux_amd64.zip
+unzip packer_1.8.5_linux_amd64.zip
+sudo mv packer /usr/local/bin
+rm packer_1.8.5_linux_amd64.zip
 
 git config --global user.name 'Viktor Vlasov'
 git config --global user.email 'viktorvlasovsiberian@gmail.com'

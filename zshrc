@@ -13,14 +13,15 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=23'
 
 plugins=(z git tmux zsh-syntax-highlighting zsh-autosuggestions
   docker docker-compose kubectl minikube python pip colorize fzf
-  mongodb zsh-completions gcloud helm zsh-abbr npm node terraform)
+  mongodb zsh-completions kafka-zsh-completions gcloud helm zsh-abbr npm node terraform)
 
 source $ZSH/oh-my-zsh.sh
 
+command -v flux >/dev/null && . <(flux completion zsh)
+command -v hcloud >/dev/null && . <(hcloud completion zsh)
+
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
-
-command -v flux >/dev/null && . <(flux completion zsh)
 
 [[ -s "$MY_CONF_HOME/helpers/certs.sh" ]]    && source "$MY_CONF_HOME/helpers/certs.sh"
 [[ -s "$MY_CONF_HOME/helpers/program.zsh" ]] && source "$MY_CONF_HOME/helpers/program.zsh"
