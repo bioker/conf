@@ -35,4 +35,5 @@ autoload -U +X bashcompinit && bashcompinit
 end_millis=$(date +%s%3N)
 echo "shell loaded in $((end_millis - start_millis)) milliseconds"
 
+[[ -s "/var/run/reboot-required" ]] && cat /var/run/reboot-required
 [[ -s "/home/wls/Scripts/words.py" ]] && python3 "/home/wls/Scripts/words.py"

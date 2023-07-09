@@ -85,12 +85,12 @@ unzip kubelogin_linux_amd64.zip
 rm kubelogin_linux_amd64.zip LICENSE README.md
 sudo mv kubelogin /usr/local/bin/kubectl-oidc_login
 
-curl -L https://get.helm.sh/helm-v3.10.0-linux-amd64.tar.gz | tar xz
+curl -L https://get.helm.sh/helm-v3.10.3-linux-amd64.tar.gz | tar xz
 chmod +x linux-amd64/helm
 sudo mv linux-amd64/helm /usr/local/bin
 rm -r linux-amd64
 
-curl -L https://github.com/fluxcd/flux2/releases/download/v0.35.0/flux_0.35.0_linux_amd64.tar.gz | tar xz
+curl -L https://github.com/fluxcd/flux2/releases/download/v0.38.3/flux_0.38.3_linux_amd64.tar.gz | tar xz
 sudo mv flux /usr/local/bin
 
 curl -L https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip
@@ -145,6 +145,9 @@ wget https://releases.hashicorp.com/packer/1.8.5/packer_1.8.5_linux_amd64.zip
 unzip packer_1.8.5_linux_amd64.zip
 sudo mv packer /usr/local/bin
 rm packer_1.8.5_linux_amd64.zip
+
+sudo curl -fL https://app.getambassador.io/download/tel2/linux/amd64/latest/telepresence -o /usr/local/bin/telepresence
+sudo chmod a+x /usr/local/bin/telepresence
 
 git config --global user.name 'Viktor Vlasov'
 git config --global user.email 'viktorvlasovsiberian@gmail.com'
