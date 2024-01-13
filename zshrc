@@ -29,11 +29,11 @@ autoload -U +X bashcompinit && bashcompinit
 [[ -s "$MY_CONF_HOME/helpers/common.zsh" ]]  && source "$MY_CONF_HOME/helpers/common.zsh"
 [[ -s "$MY_CONF_HOME/helpers/devops.zsh" ]]  && source "$MY_CONF_HOME/helpers/devops.zsh"
 [[ -s "$MY_CONF_HOME/helpers/git.zsh" ]]     && source "$MY_CONF_HOME/helpers/git.zsh"
-[[ -s "$MY_CONF_HOME/helpers/gradle.zsh" ]]  && source "$MY_CONF_HOME/helpers/gradle.zsh"
 [[ -s "$MY_CONF_HOME/helpers/k8s.zsh" ]]     && source "$MY_CONF_HOME/helpers/k8s.zsh"
 
 end_millis=$(date +%s%3N)
 echo "shell loaded in $((end_millis - start_millis)) milliseconds"
 
 [[ -s "/var/run/reboot-required" ]] && cat /var/run/reboot-required
-[[ -s "/home/wls/Scripts/words.py" ]] && python3 "/home/wls/Scripts/words.py"
+
+export PATH=/home/wls/.tiup/bin:$PATH
