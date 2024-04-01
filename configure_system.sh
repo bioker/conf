@@ -42,6 +42,7 @@ efibootmgr
 evince-common
 ffmpeg
 findutils
+flameshot
 fonts-indic
 fonts-powerline
 freeglut3-dev
@@ -75,8 +76,10 @@ iftop
 indicator-cpufreq
 init
 jfrog-cli-v2-jf
+joystick
 jq
 json-toolkit
+jstest-gtk
 kafkacat
 keeweb-desktop
 language-pack-en
@@ -175,7 +178,7 @@ step-cli
 stress
 sudo
 sysstat
-teleport
+teleport-ent
 thin-provisioning-tools
 tidy
 tig
@@ -268,7 +271,7 @@ curl -sLO https://github.com/linkerd/linkerd2/releases/download/stable-2.12.1/li
 chmod +x linkerd2-cli-stable-2.12.1-linux-amd64
 sudo mv linkerd2-cli-stable-2.12.1-linux-amd64 /usr/local/bin/linkerd
 
-curl -sL https://github.com/derailed/k9s/releases/download/v0.26.7/k9s_Linux_x86_64.tar.gz | tar xz
+curl -sL https://github.com/derailed/k9s/releases/download/v0.32.4/k9s_Linux_amd64.tar.gz | tar xz
 rm LICENSE README.md
 sudo mv k9s /usr/local/bin
 
