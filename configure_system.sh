@@ -275,6 +275,19 @@ curl -sL https://github.com/derailed/k9s/releases/download/v0.32.4/k9s_Linux_amd
 rm LICENSE README.md
 sudo mv k9s /usr/local/bin
 
+curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
+      sudo gpg --dearmor -o /etc/apt/keyrings/microsoft.gpg
+sudo chmod go+r /etc/apt/keyrings/microsoft.gpg
+
+echo "Types: deb
+URIs: https://packages.microsoft.com/repos/azure-cli/
+Suites: $(lsb_release -cs)
+Components: main
+Architectures: $(dpkg --print-architecture)
+Signed-by: /etc/apt/keyrings/microsoft.gpg" | sudo tee /etc/apt/sources.list.d/azure-cli.sources
+sudo apt-get update
+sudo apt-get install azure-cli
+
 git config --global user.name 'Viktor Vlasov'
 git config --global user.email 'viktorvlasovsiberian@gmail.com'
 
