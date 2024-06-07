@@ -3,209 +3,46 @@ mkdir -p ~/Scripts
 mkdir -p ~/Resources
 mkdir -p ~/Programs
 
-# apt-mark showmanual
 packages="
-1password
-1password-cli
-acpi
-acpitool
-android-sdk-platform-tools-common
-anydesk
-apache2-utils
-apt-transport-https
 asciinema
-base-passwd
-bridge-utils
-bsdutils
-ca-certificates
-cewl
-chkrootkit
+build-essential
 clickhouse-client
-code
-containerd
-cpulimit
-crunch
-cryptsetup
-cryptsetup-bin
-cryptsetup-initramfs
 curl
-dash
-dconf-editor
-diffutils
-dirmngr
-dmeventd
-docker
-docker-compose
-docker.io
-dstat
-efibootmgr
-evince-common
 ffmpeg
-findutils
 flameshot
 fonts-indic
 fonts-powerline
-freeglut3-dev
-fwupd
 fzf
-geoip-bin
-gh
 git
-git-delta
 gnome-tweaks
-gnupg
-gnupg-agent
-gnupg2
-google-chrome-stable
-google-cloud-cli
-google-cloud-sdk-gke-gcloud-auth-plugin
 gparted
 graphviz
-grep
-grub-common
-grub-efi-amd64-bin
-grub-efi-amd64-signed
-grub-gfxpayload-lists
-grub-pc
-grub-pc-bin
-grub2-common
-gzip
-hostname
 htop
 iftop
-indicator-cpufreq
-init
-jfrog-cli-v2-jf
-joystick
 jq
-json-toolkit
-jstest-gtk
 kafkacat
-keeweb-desktop
-language-pack-en
-language-pack-en-base
-language-pack-gnome-en
-language-pack-gnome-en-base
-libaio1
-libdebconfclient0
-libdevmapper-event1.02.1
-libevdocument3-4
-libevview3-3
-liblvm2cmd2.03
-libncurses5-dev
-libncursesw5-dev
-libnvidia-cfg1-515
-libnvidia-compute-515
-libnvidia-compute-515:i386
-libnvidia-decode-515
-libnvidia-decode-515:i386
-libnvidia-encode-515
-libnvidia-encode-515:i386
-libnvidia-extra-515
-libnvidia-fbc1-515
-libnvidia-fbc1-515:i386
-libnvidia-gl-515
-libnvidia-gl-515:i386
-libpangoft2-1.0-0:i386
-libpangoxft-1.0-0
-libsdl-image1.2
-libsdl-ttf2.0-0
-libsdl1.2-dev
-libspa-0.2-modules
-libvirt-clients
-libvirt-daemon-system
-linux-generic-hwe-22.04
-linux-modules-nvidia-515-generic-hwe-22.04
-linux-objects-nvidia-515-5.15.0-56-generic
-linux-signatures-nvidia-5.15.0-56-generic
 lm-sensors
-login
-lsb-release
-lvm2
-mesa-common-dev
-metasploit-framework
-mokutil
-mongodb-compass
-mongodb-database-tools
-mongodb-mongosh
-moreutils
 mysql-client
 ncat
-ncurses-base
-ncurses-bin
 net-tools
 nmap
-nodejs
-npm
-nvidia-compute-utils-515
-nvidia-driver-515
-nvidia-kernel-common-515
-nvidia-kernel-source-515
-nvidia-prime
-nvidia-utils-515
-open-eid
 openjdk-17-jdk
-opensc
-openshot-qt
-openvpn3
-os-prober
-p7zip
-pavucontrol
-percona-backup-mongodb
-percona-release
 petname
-pipewire-bin
-poppler-utils
 postgresql-client
 protobuf-compiler
-pulseaudio
 pv
-python2
-python3-dev
-python3-openshot
-python3-pip
-python3-venv
-qemu-system-x86
 redis-tools
-resolvconf
 rkhunter
-shim-signed
 silversearcher-ag
-skypeforlinux
-software-properties-common
-steam-installer
-step-cli
-stress
-sudo
-sysstat
-teleport-ent
-thin-provisioning-tools
-tidy
 tig
 tmux
 traceroute
-translate-shell
-trivy
-ubuntu-desktop
-ubuntu-desktop-minimal
-ubuntu-minimal
-ubuntu-standard
-ubuntu-wallpapers
-update-notifier-common
-virtualbox
-virtualbox-ext-pack
 vlc
 weechat
-wget
-whois
 wireguard
 wireshark
 x11vnc
 xclip
-xfce4-goodies
-xserver-xorg-video-nvidia-515
-xtightvncviewer
-zoom
 zsh
 "
 sudo apt install $(echo $packages)
@@ -214,17 +51,17 @@ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stabl
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin
 
-curl -LO https://github.com/int128/kubelogin/releases/download/v1.25.3/kubelogin_linux_amd64.zip
+curl -LO https://github.com/int128/kubelogin/releases/download/v1.28.1/kubelogin_linux_amd64.zip
 unzip kubelogin_linux_amd64.zip
 rm kubelogin_linux_amd64.zip LICENSE README.md
 sudo mv kubelogin /usr/local/bin/kubectl-oidc_login
 
-curl -L https://get.helm.sh/helm-v3.10.3-linux-amd64.tar.gz | tar xz
+curl -L https://get.helm.sh/helm-v3.15.1-linux-amd64.tar.gz | tar xz
 chmod +x linux-amd64/helm
 sudo mv linux-amd64/helm /usr/local/bin
 rm -r linux-amd64
 
-curl -L https://github.com/fluxcd/flux2/releases/download/v0.38.3/flux_0.38.3_linux_amd64.tar.gz | tar xz
+curl -L https://github.com/fluxcd/flux2/releases/download/v2.3.0/flux_2.3.0_linux_amd64.tar.gz | tar xz
 sudo mv flux /usr/local/bin
 
 curl -L https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip
@@ -232,15 +69,15 @@ unzip awscliv2.zip
 sudo ./aws/install
 rm -r aws awscliv2.zip
 
-curl -L https://github.com/hetznercloud/cli/releases/download/v1.31.1/hcloud-linux-amd64.tar.gz | tar xz
+curl -L https://github.com/hetznercloud/cli/releases/download/v1.43.1/hcloud-linux-amd64.tar.gz | tar xz
 rm LICENSE README.md
 sudo mv hcloud /usr/local/bin
 
-curl -LO https://github.com/dandavison/delta/releases/download/0.14.0/git-delta_0.14.0_amd64.deb
-sudo apt install ./git-delta_0.14.0_amd64.deb
-rm git-delta_0.14.0_amd64.deb
+curl -LO https://github.com/dandavison/delta/releases/download/0.17.0/git-delta_0.17.0_amd64.deb
+sudo apt install ./git-delta_0.17.0_amd64.deb
+rm git-delta_0.17.0_amd64.deb
 
-curl -LO https://github.com/mikefarah/yq/releases/download/v4.27.5/yq_linux_amd64
+curl -LO https://github.com/mikefarah/yq/releases/download/v4.44.1/yq_linux_amd64
 chmod +x yq_linux_amd64
 sudo mv yq_linux_amd64 /usr/local/bin/yq
 
@@ -250,14 +87,14 @@ sudo apt-get update && sudo apt-get install google-cloud-cli
 
 sudo curl -sL https://github.com/projectcalico/calico/releases/download/v3.24.1/calicoctl-linux-amd64 -o /usr/local/bin/calicoctl && sudo chmod +x /usr/local/bin/calicoctl
 
-curl -LO https://github.com/cli/cli/releases/download/v2.16.1/gh_2.16.1_linux_amd64.deb
-sudo apt install ./gh_2.16.1_linux_amd64.deb
-rm ./gh_2.16.1_linux_amd64.deb
+curl -LO https://github.com/cli/cli/releases/download/v2.50.0/gh_2.50.0_linux_amd64.deb
+sudo apt install ./gh_2.50.0_linux_amd64.deb
+rm ./gh_2.50.0_linux_amd64.deb
 
-wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.18.5/kubeseal-0.18.5-linux-amd64.tar.gz
-tar -xvzf kubeseal-0.18.5-linux-amd64.tar.gz kubeseal
+wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.26.3/kubeseal-0.26.3-linux-amd64.tar.gz
+tar -xvzf kubeseal-0.26.3-linux-amd64.tar.gz kubeseal
 sudo install -m 755 kubeseal /usr/local/bin/kubeseal
-rm kubeseal-0.18.5-linux-amd64.tar.gz kubeseal
+rm kubeseal-0.26.3-linux-amd64.tar.gz kubeseal
 
 curl -sL https://github.com/itaysk/kubectl-neat/releases/download/v2.0.3/kubectl-neat_linux_amd64.tar.gz | tar xz
 sudo mv kubectl-neat /usr/local/bin
@@ -278,6 +115,24 @@ sudo mv k9s /usr/local/bin
 curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
       sudo gpg --dearmor -o /etc/apt/keyrings/microsoft.gpg
 sudo chmod go+r /etc/apt/keyrings/microsoft.gpg
+
+curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 700 msfinstall && ./msfinstall
+
+wget https://downloads.mongodb.com/compass/mongodb-compass_1.43.0_amd64.deb
+sudo apt install -f ./mongodb-compass_1.43.0_amd64.deb
+rm ./mongodb-compass_1.43.0_amd64.deb
+
+wget https://downloads.mongodb.com/compass/mongodb-mongosh_2.2.6_amd64.deb
+sudo apt install -f ./mongodb-mongosh_2.2.6_amd64.deb
+rm ./mongodb-mongosh_2.2.6_amd64.deb
+
+curl -sL https://fastdl.mongodb.org/tools/db/mongodb-database-tools-ubuntu2204-x86_64-100.9.4.tgz | tar xz
+sudo mv mongodb-database-tools-ubuntu2204-x86_64-100.9.4/bin/* /usr/local/bin
+rm -r mongodb-database-tools-ubuntu2204-x86_64-100.9.4
+
+wget https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.deb
+sudo dpkg -i trivy_0.18.3_Linux-64bit.deb
+rm trivy_0.18.3_Linux-64bit.deb
 
 echo "Types: deb
 URIs: https://packages.microsoft.com/repos/azure-cli/
