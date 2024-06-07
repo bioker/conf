@@ -29,6 +29,7 @@ nmap
 openjdk-17-jdk
 petname
 postgresql-client
+python3.12-venv
 protobuf-compiler
 pv
 redis-tools
