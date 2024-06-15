@@ -96,7 +96,7 @@ chmod +x yq_linux_amd64
 sudo mv yq_linux_amd64 /usr/local/bin/yq
 
 echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-wget -O- https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/google-cloud.gpg
 sudo apt-get update && sudo apt-get install google-cloud-cli
 
 sudo curl -sL https://github.com/projectcalico/calico/releases/download/v3.24.1/calicoctl-linux-amd64 -o /usr/local/bin/calicoctl && sudo chmod +x /usr/local/bin/calicoctl
