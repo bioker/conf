@@ -150,6 +150,11 @@ wget https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.
 sudo dpkg -i trivy_0.18.3_Linux-64bit.deb
 rm trivy_0.18.3_Linux-64bit.deb
 
+cd /home/wls/Programs/
+curl -s https://downloads.apache.org/kafka/3.6.2/kafka_2.13-3.6.2.tgz | tar xz
+ln -s /home/wls/Programs/kafka_2.13-3.6.2 /home/wls/Programs/kafka
+cd ~
+
 echo "Types: deb
 URIs: https://packages.microsoft.com/repos/azure-cli/
 Suites: $(lsb_release -cs)
