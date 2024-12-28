@@ -5,7 +5,7 @@ function genkey {
 function gencert {
     key_file_arg=${key_file:-"some.key"}
     cert_file_arg=${cert_file:-"some.crt"}
-    subj_arg=${subj:-"/C=EE/ST=Harju/L=Tallinn/O=Viktor Vlasov/OU=Viktor Vlasov/CN=localhost"}
+    subj_arg=${subj:-"/C=EE/ST=Harju/L=Tallinn/O=Viktor Vlasov/OU=Viktor Vlasov/CN=viktorvlasov.com"}
     openssl req -new -x509 -key $key_file_arg -out $cert_file_arg -subj $subj_arg
 }
 
