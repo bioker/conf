@@ -8,6 +8,7 @@ asciinema
 build-essential
 clickhouse-client
 curl
+fd-find
 ffmpeg
 flameshot
 fonts-indic
