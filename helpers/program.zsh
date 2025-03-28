@@ -9,6 +9,7 @@ export PATH=$PATH:$HOME/Programs/kotlinc/bin
 export PATH=$PATH:$HOME/Programs/kafka/bin
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$HOME/.tfenv/bin:$PATH
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

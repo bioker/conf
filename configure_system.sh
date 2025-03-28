@@ -156,6 +156,11 @@ curl -s https://downloads.apache.org/kafka/3.6.2/kafka_2.13-3.6.2.tgz | tar xz
 ln -s /home/wls/Programs/kafka_2.13-3.6.2 /home/wls/Programs/kafka
 cd ~
 
+curl -L --fail --remote-name-all https://github.com/cilium/hubble/releases/download/v1.17.1/hubble-linux-amd64.tar.gz{,.sha256sum}
+sha256sum --check hubble-linux-amd64.tar.gz.sha256sum
+sudo tar xzvfC hubble-linux-amd64.tar.gz /usr/local/bin
+rm hubble-linux-amd64.tar.gz{,.sha256sum}
+
 echo "Types: deb
 URIs: https://packages.microsoft.com/repos/azure-cli/
 Suites: $(lsb_release -cs)
